@@ -5,33 +5,43 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SnowBirdian — Business Acquisitions</title>
   <meta name="description" content="SnowBirdian acquires and operates great small businesses. Confidential conversations, fair offers, and a long-term home for what you built." />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --navy: #0c1b2a;
-      --navy-soft: #13283d;
-      --ice: #f4f8fb;
-      --frost: #5b9bd5;
-      --frost-deep: #2e6da4;
-      --frost-soft: rgba(91, 155, 213, 0.12);
-      --text: #1c2b3a;
-      --text-muted: #5d6e7f;
-      --text-light: #9fb3c4;
-      --border: #dce6ee;
-      --white: #ffffff;
+      --bg: #07090e;
+      --surface: #0e1219;
+      --surface-2: #121826;
+      --border: #1d2433;
+      --ice: #4db5ff;
+      --ice-deep: #2563eb;
+      --ice-soft: rgba(77, 181, 255, 0.10);
+      --flame: #ff9a3d;
+      --flame-deep: #e0533d;
+      --flame-soft: rgba(255, 154, 61, 0.10);
+      --text: #e9edf4;
+      --text-muted: #8a96a8;
+      --gradient: linear-gradient(90deg, var(--ice) 0%, var(--flame) 100%);
     }
 
     html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
 
     body {
-      background: var(--white);
+      background: var(--bg);
       color: var(--text);
       font-family: 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.7;
     }
 
     h1, h2, h3, .serif { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+
+    .grad-text {
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
     /* ── NAV ── */
     .nav {
@@ -40,15 +50,15 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(10px);
+      background: rgba(7, 9, 14, 0.88);
+      backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 1rem 2rem;
+      padding: 0.8rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -56,14 +66,20 @@
     }
 
     .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
       font-family: Georgia, serif;
       font-size: 1.15rem;
-      color: var(--navy);
+      color: var(--text);
       text-decoration: none;
       letter-spacing: 0.01em;
     }
 
-    .nav-logo span { color: var(--frost-deep); }
+    .nav-logo img { height: 2.1rem; width: auto; mix-blend-mode: screen; }
+
+    .nav-logo .word-snow { color: var(--ice); }
+    .nav-logo .word-birdian { color: var(--flame); }
 
     .nav-links {
       display: flex;
@@ -80,17 +96,18 @@
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--frost-deep); }
+    .nav-links a:hover { color: var(--ice); }
 
     .nav-cta {
-      background: var(--navy);
-      color: var(--white) !important;
+      background: var(--gradient);
+      color: #0a0c12 !important;
+      font-weight: 600;
       padding: 0.55rem 1.2rem;
       border-radius: 4px;
-      transition: background 0.2s;
+      transition: opacity 0.2s;
     }
 
-    .nav-cta:hover { background: var(--frost-deep); }
+    .nav-cta:hover { opacity: 0.88; }
 
     @media (max-width: 640px) {
       .nav-links a:not(.nav-cta) { display: none; }
@@ -105,7 +122,6 @@
       align-items: center;
       text-align: center;
       padding: 7rem 2rem 4rem;
-      background: linear-gradient(180deg, var(--ice) 0%, var(--white) 100%);
       position: relative;
       overflow: hidden;
     }
@@ -114,22 +130,31 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 55% 45% at 50% 35%, rgba(91, 155, 213, 0.10) 0%, transparent 70%);
+      background:
+        radial-gradient(ellipse 45% 40% at 28% 30%, rgba(37, 99, 235, 0.16) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 40% at 72% 32%, rgba(224, 83, 61, 0.14) 0%, transparent 70%);
       pointer-events: none;
+    }
+
+    .hero-logo {
+      width: clamp(110px, 18vw, 170px);
+      height: auto;
+      margin-bottom: 1.75rem;
+      mix-blend-mode: screen;
     }
 
     .hero-eyebrow {
       font-size: 0.72rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--frost-deep);
       margin-bottom: 1.5rem;
+      font-weight: 600;
     }
 
     .hero-headline {
       font-size: clamp(2.4rem, 6vw, 4.25rem);
       line-height: 1.12;
-      color: var(--navy);
+      color: var(--text);
       max-width: 18ch;
       margin-bottom: 1.5rem;
     }
@@ -161,20 +186,21 @@
     }
 
     .btn-primary {
-      background: var(--navy);
-      color: var(--white);
-      border: 1px solid var(--navy);
+      background: var(--gradient);
+      color: #0a0c12;
+      font-weight: 600;
+      border: none;
     }
 
-    .btn-primary:hover { background: var(--frost-deep); border-color: var(--frost-deep); }
+    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
 
     .btn-ghost {
-      color: var(--navy);
+      color: var(--text);
       border: 1px solid var(--border);
-      background: var(--white);
+      background: transparent;
     }
 
-    .btn-ghost:hover { border-color: var(--frost-deep); color: var(--frost-deep); }
+    .btn-ghost:hover { border-color: var(--ice); color: var(--ice); }
 
     /* ── SECTIONS ── */
     .section {
@@ -187,13 +213,16 @@
       font-size: 0.7rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--frost-deep);
+      color: var(--ice);
       margin-bottom: 0.85rem;
+      font-weight: 600;
     }
+
+    .section-eyebrow.warm { color: var(--flame); }
 
     .section-title {
       font-size: clamp(1.7rem, 4vw, 2.4rem);
-      color: var(--navy);
+      color: var(--text);
       line-height: 1.25;
       margin-bottom: 1rem;
       max-width: 24ch;
@@ -211,8 +240,6 @@
     .centered .section-title, .centered .section-lead { margin-left: auto; margin-right: auto; }
 
     /* ── THESIS ── */
-    #thesis { background: var(--white); }
-
     .thesis-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -220,25 +247,25 @@
     }
 
     .thesis-card {
-      background: var(--ice);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.75rem;
       transition: border-color 0.2s, transform 0.2s;
     }
 
-    .thesis-card:hover { border-color: var(--frost); transform: translateY(-2px); }
+    .thesis-card:hover { border-color: var(--ice); transform: translateY(-2px); }
+    .thesis-card:nth-child(2):hover { border-color: var(--flame); }
 
     .thesis-num {
       font-family: Georgia, serif;
       font-size: 1.8rem;
-      color: var(--frost-deep);
       margin-bottom: 0.75rem;
     }
 
     .thesis-card h3 {
       font-size: 1.05rem;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 0.5rem;
     }
 
@@ -252,8 +279,9 @@
 
     /* ── CRITERIA ── */
     #criteria {
-      background: var(--navy);
-      color: var(--white);
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
     }
 
     #criteria .section-inner {
@@ -262,10 +290,6 @@
       padding: 6rem 2rem;
     }
 
-    #criteria .section-eyebrow { color: var(--frost); }
-    #criteria .section-title { color: var(--white); }
-    #criteria .section-lead { color: var(--text-light); }
-
     .criteria-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -273,31 +297,38 @@
     }
 
     .criteria-card {
-      background: var(--navy-soft);
-      border: 1px solid rgba(91, 155, 213, 0.25);
+      background: var(--surface-2);
+      border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.6rem 1.75rem;
+      transition: border-color 0.2s;
     }
+
+    .criteria-card:nth-child(odd):hover { border-color: rgba(77, 181, 255, 0.5); }
+    .criteria-card:nth-child(even):hover { border-color: rgba(255, 154, 61, 0.5); }
 
     .criteria-label {
       font-size: 0.68rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--frost);
       margin-bottom: 0.6rem;
+      font-weight: 600;
     }
+
+    .criteria-card:nth-child(odd) .criteria-label { color: var(--ice); }
+    .criteria-card:nth-child(even) .criteria-label { color: var(--flame); }
 
     .criteria-value {
       font-family: Georgia, serif;
       font-size: 1.25rem;
-      color: var(--white);
+      color: var(--text);
       margin-bottom: 0.4rem;
       line-height: 1.4;
     }
 
     .criteria-card p {
       font-size: 0.84rem;
-      color: var(--text-light);
+      color: var(--text-muted);
       line-height: 1.6;
     }
 
@@ -314,24 +345,31 @@
     .process-step {
       position: relative;
       padding: 1.5rem 1.4rem;
-      background: var(--white);
+      background: var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
+      text-align: left;
+      transition: border-color 0.2s;
     }
+
+    .process-step:hover { border-color: rgba(77, 181, 255, 0.45); }
 
     .process-step::before {
       counter-increment: step;
       content: counter(step, decimal-leading-zero);
       font-family: Georgia, serif;
       font-size: 1.6rem;
-      color: var(--frost);
       display: block;
       margin-bottom: 0.6rem;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .process-step h3 {
       font-size: 0.98rem;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 0.4rem;
     }
 
@@ -353,9 +391,11 @@
     @media (max-width: 520px) { .process-steps { grid-template-columns: 1fr; } }
 
     /* ── WHY ── */
-    #why { background: var(--ice); }
-
-    #why .section { padding: 6rem 2rem; }
+    #why {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
 
     .why-grid {
       display: grid;
@@ -364,17 +404,17 @@
     }
 
     .why-card {
-      background: var(--white);
+      background: var(--surface-2);
       border: 1px solid var(--border);
       border-radius: 8px;
       padding: 1.75rem;
+      text-align: left;
     }
 
     .why-icon {
       width: 2.4rem;
       height: 2.4rem;
       border-radius: 50%;
-      background: var(--frost-soft);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -382,9 +422,13 @@
       margin-bottom: 0.9rem;
     }
 
+    .why-card:nth-child(1) .why-icon { background: var(--ice-soft); }
+    .why-card:nth-child(2) .why-icon { background: var(--flame-soft); }
+    .why-card:nth-child(3) .why-icon { background: var(--ice-soft); }
+
     .why-card h3 {
       font-size: 1rem;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 0.45rem;
     }
 
@@ -406,13 +450,15 @@
 
     .founder-photo {
       aspect-ratio: 4/5;
-      background: linear-gradient(160deg, var(--ice) 0%, var(--frost-soft) 100%);
+      background:
+        linear-gradient(160deg, rgba(37, 99, 235, 0.12) 0%, rgba(224, 83, 61, 0.12) 100%),
+        var(--surface);
       border: 1px solid var(--border);
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-light);
+      color: var(--text-muted);
       font-size: 0.8rem;
       letter-spacing: 0.1em;
       text-transform: uppercase;
@@ -420,7 +466,7 @@
 
     .founder-name {
       font-size: 1.5rem;
-      color: var(--navy);
+      color: var(--text);
       margin-bottom: 0.25rem;
     }
 
@@ -428,8 +474,9 @@
       font-size: 0.8rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: var(--frost-deep);
+      color: var(--flame);
       margin-bottom: 1.25rem;
+      font-weight: 600;
     }
 
     .founder-bio p {
@@ -448,24 +495,32 @@
 
     /* ── CONTACT ── */
     #contact {
-      background: var(--navy);
-      color: var(--white);
       text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
     }
 
-    #contact .section { padding: 6rem 2rem 5rem; }
+    #contact::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 40% 55% at 25% 80%, rgba(37, 99, 235, 0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 55% at 75% 80%, rgba(224, 83, 61, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
 
-    #contact .section-eyebrow { color: var(--frost); }
+    #contact .section { padding: 6rem 2rem 5rem; position: relative; }
 
     #contact h2 {
       font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-      color: var(--white);
+      color: var(--text);
       margin-bottom: 1rem;
       line-height: 1.25;
     }
 
     #contact .section-lead {
-      color: var(--text-light);
       margin-left: auto;
       margin-right: auto;
       margin-bottom: 2.5rem;
@@ -474,34 +529,42 @@
     .contact-email {
       font-family: Georgia, serif;
       font-size: 1.1rem;
-      color: var(--frost);
       text-decoration: none;
-      border-bottom: 1px solid rgba(91, 155, 213, 0.4);
+      border-bottom: 1px solid rgba(255, 154, 61, 0.45);
       padding-bottom: 2px;
-      transition: color 0.2s, border-color 0.2s;
+      transition: border-color 0.2s;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .contact-email:hover { color: var(--white); border-color: var(--white); }
+    .contact-email:hover { border-color: var(--ice); }
 
     .contact-confidential {
       margin-top: 2.5rem;
       font-size: 0.75rem;
       letter-spacing: 0.08em;
-      color: var(--text-light);
+      color: var(--text-muted);
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--navy);
-      border-top: 1px solid rgba(91, 155, 213, 0.18);
+      border-top: 1px solid var(--border);
       padding: 1.75rem 2rem;
       text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.6rem;
     }
+
+    footer img { height: 1.6rem; width: auto; opacity: 0.85; mix-blend-mode: screen; }
 
     footer p {
       font-size: 0.72rem;
       letter-spacing: 0.08em;
-      color: var(--text-light);
+      color: var(--text-muted);
     }
 
     /* ── REVEAL ANIMATION ── */
@@ -522,7 +585,10 @@
   <!-- ── NAV ── -->
   <nav class="nav">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo">Snow<span>Birdian</span></a>
+      <a href="#hero" class="nav-logo">
+        <img src="assets/logo.png" alt="SnowBirdian logo" />
+        <span><span class="word-snow">Snow</span><span class="word-birdian">Birdian</span></span>
+      </a>
       <div class="nav-links">
         <a href="#thesis">Approach</a>
         <a href="#criteria">Criteria</a>
@@ -535,7 +601,8 @@
 
   <!-- ── HERO ── -->
   <section id="hero">
-    <p class="hero-eyebrow">SnowBirdian Acquisitions</p>
+    <img class="hero-logo" src="assets/logo.png" alt="SnowBirdian phoenix logo" />
+    <p class="hero-eyebrow grad-text">SnowBirdian Acquisitions</p>
     <h1 class="hero-headline">A permanent home for the business you built</h1>
     <p class="hero-sub">SnowBirdian acquires and operates great small businesses. Confidential conversations, fair offers, and a steward who cares about your team, your customers, and your legacy.</p>
     <div class="hero-actions">
@@ -551,17 +618,17 @@
     <p class="section-lead">We are not a broker and not a flipper. We buy businesses to own and grow them — keeping what works, investing where it counts.</p>
     <div class="thesis-grid">
       <div class="thesis-card reveal">
-        <p class="thesis-num">01</p>
+        <p class="thesis-num" style="color: var(--ice);">01</p>
         <h3>Long-term ownership</h3>
         <p>No fund deadlines, no quick resale. We acquire with the intent to hold and operate for years, not quarters.</p>
       </div>
       <div class="thesis-card reveal">
-        <p class="thesis-num">02</p>
+        <p class="thesis-num" style="color: var(--flame);">02</p>
         <h3>People stay first</h3>
         <p>Your employees and customers made the business what it is. Continuity for them is a core part of every deal we do.</p>
       </div>
       <div class="thesis-card reveal">
-        <p class="thesis-num">03</p>
+        <p class="thesis-num grad-text">03</p>
         <h3>Modern operations</h3>
         <p>We bring technology, automation, and disciplined financial management to strengthen what you built — not replace it.</p>
       </div>
@@ -571,7 +638,7 @@
   <!-- ── CRITERIA ── -->
   <section id="criteria">
     <div class="section-inner">
-      <p class="section-eyebrow">Acquisition Criteria</p>
+      <p class="section-eyebrow warm">Acquisition Criteria</p>
       <h2 class="section-title">What we look for</h2>
       <p class="section-lead">If your business fits most of these, we should talk. If you're not sure — reach out anyway. Every conversation is confidential.</p>
       <div class="criteria-grid">
@@ -638,7 +705,7 @@
   <!-- ── WHY ── -->
   <div id="why">
     <section class="section centered">
-      <p class="section-eyebrow">Why SnowBirdian</p>
+      <p class="section-eyebrow warm">Why SnowBirdian</p>
       <h2 class="section-title">Selling to us is different</h2>
       <div class="why-grid" style="margin-top: 2.5rem;">
         <div class="why-card reveal">
@@ -689,6 +756,7 @@
 
   <!-- ── FOOTER ── -->
   <footer>
+    <img src="assets/logo.png" alt="SnowBirdian logo" />
     <p>© 2026 SnowBirdian · Scottsdale, AZ</p>
   </footer>
 
