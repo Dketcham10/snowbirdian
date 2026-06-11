@@ -574,20 +574,102 @@
     /* ── CONTACT ── */
     #contact { text-align: center; }
 
-    .contact-email {
-      font-family: Georgia, serif;
-      font-size: 1.25rem;
-      text-decoration: none;
-      border-bottom: 2px solid rgba(249, 127, 46, 0.4);
-      padding-bottom: 2px;
-      transition: border-color 0.2s;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .contact-form {
+      max-width: 580px;
+      margin: 0 auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 2.2rem 2rem;
+      box-shadow: 0 18px 50px rgba(21, 32, 46, 0.07);
+      text-align: left;
     }
 
-    .contact-email:hover { border-color: var(--blue); }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
+
+    .form-field { margin-bottom: 1.1rem; }
+
+    .form-field label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+
+    .form-field input,
+    .form-field select,
+    .form-field textarea {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.92rem;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.75rem 0.9rem;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      appearance: none;
+    }
+
+    .form-field textarea { resize: vertical; min-height: 120px; }
+
+    .form-field input:focus,
+    .form-field select:focus,
+    .form-field textarea:focus {
+      outline: none;
+      border-color: var(--blue);
+      background: var(--bg);
+      box-shadow: 0 0 0 3px var(--blue-soft);
+    }
+
+    .form-field select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235d6e7f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 0.85rem center;
+      background-size: 0.85rem;
+      padding-right: 2.4rem;
+    }
+
+    .form-submit {
+      width: 100%;
+      font-family: inherit;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #fff;
+      background: var(--gradient);
+      border: none;
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+
+    .form-submit:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37, 99, 235, 0.22); }
+
+    .form-success {
+      display: none;
+      max-width: 580px;
+      margin: 0 auto 1.4rem;
+      padding: 1.1rem 1.5rem;
+      border-radius: 10px;
+      background: rgba(34, 160, 90, 0.09);
+      border: 1px solid rgba(34, 160, 90, 0.3);
+      color: #1d7a47;
+      font-size: 0.92rem;
+    }
+
+    .form-success.show { display: block; animation: fadeIn 0.4s ease; }
 
     .contact-confidential {
       margin-top: 2.2rem;
@@ -874,7 +956,54 @@
     <p class="section-eyebrow">Start a Conversation</p>
     <h2 class="section-title">Let's talk about your business</h2>
     <p class="section-lead">Whether you're improving, buying, or preparing to sell — the first conversation is free, confidential, and pressure-free.</p>
-    <a class="contact-email" href="mailto:dketcham10@gmail.com">dketcham10@gmail.com</a>
+
+    <div class="form-success" id="form-success">
+      Thank you — your message has been sent. We'll be in touch shortly.
+    </div>
+
+    <form class="contact-form" action="https://formsubmit.co/dillon@snowbirdian.com" method="POST">
+      <input type="hidden" name="_subject" value="New inquiry from SnowBirdian.com" />
+      <input type="hidden" name="_captcha" value="false" />
+      <input type="hidden" name="_template" value="table" />
+      <input type="hidden" name="_next" value="https://www.snowbirdian.com/?sent=1#contact" />
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="f-name">Name</label>
+          <input type="text" id="f-name" name="name" required placeholder="Your name" />
+        </div>
+        <div class="form-field">
+          <label for="f-email">Email</label>
+          <input type="email" id="f-email" name="email" required placeholder="you@company.com" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-field">
+          <label for="f-company">Company <span style="text-transform:none;font-weight:400;">(optional)</span></label>
+          <input type="text" id="f-company" name="company" placeholder="Company name" />
+        </div>
+        <div class="form-field">
+          <label for="f-interest">I'm interested in</label>
+          <select id="f-interest" name="interest" required>
+            <option value="" disabled selected>Select one…</option>
+            <option>Improving my business</option>
+            <option>Acquisition &amp; due diligence</option>
+            <option>Preparing to sell</option>
+            <option>Something else</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <label for="f-message">Message</label>
+        <textarea id="f-message" name="message" required placeholder="Tell us a little about your business and what you're looking for…"></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Send Message</button>
+    </form>
+
     <p class="contact-confidential">All inquiries are strictly confidential.</p>
   </section>
 
@@ -885,6 +1014,12 @@
   </footer>
 
   <script>
+    // Show thank-you banner after form redirect
+    if (new URLSearchParams(location.search).has('sent')) {
+      document.getElementById('form-success').classList.add('show');
+      history.replaceState(null, '', location.pathname + '#contact');
+    }
+
     // Scroll progress bar
     const progress = document.getElementById('progress');
     window.addEventListener('scroll', () => {
