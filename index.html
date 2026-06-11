@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SnowBirdian — Business Acquisitions</title>
+  <meta name="description" content="SnowBirdian acquires and operates great small businesses. Confidential conversations, fair offers, and a long-term home for what you built." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0c1b2a;
+      --navy-soft: #13283d;
+      --ice: #f4f8fb;
+      --frost: #5b9bd5;
+      --frost-deep: #2e6da4;
+      --frost-soft: rgba(91, 155, 213, 0.12);
+      --text: #1c2b3a;
+      --text-muted: #5d6e7f;
+      --text-light: #9fb3c4;
+      --border: #dce6ee;
+      --white: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+
+    body {
+      background: var(--white);
+      color: var(--text);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    h1, h2, h3, .serif { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+
+    /* ── NAV ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-logo {
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--navy);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+    }
+
+    .nav-logo span { color: var(--frost-deep); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--frost-deep); }
+
+    .nav-cta {
+      background: var(--navy);
+      color: var(--white) !important;
+      padding: 0.55rem 1.2rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--frost-deep); }
+
+    @media (max-width: 640px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 7rem 2rem 4rem;
+      background: linear-gradient(180deg, var(--ice) 0%, var(--white) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 55% 45% at 50% 35%, rgba(91, 155, 213, 0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--frost-deep);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline {
+      font-size: clamp(2.4rem, 6vw, 4.25rem);
+      line-height: 1.12;
+      color: var(--navy);
+      max-width: 18ch;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      color: var(--text-muted);
+      max-width: 36rem;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 1.9rem;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--navy);
+      color: var(--white);
+      border: 1px solid var(--navy);
+    }
+
+    .btn-primary:hover { background: var(--frost-deep); border-color: var(--frost-deep); }
+
+    .btn-ghost {
+      color: var(--navy);
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+
+    .btn-ghost:hover { border-color: var(--frost-deep); color: var(--frost-deep); }
+
+    /* ── SECTIONS ── */
+    .section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    .section-eyebrow {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--frost-deep);
+      margin-bottom: 0.85rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+      max-width: 24ch;
+    }
+
+    .section-lead {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 38rem;
+      margin-bottom: 3rem;
+      font-weight: 300;
+    }
+
+    .centered { text-align: center; }
+    .centered .section-title, .centered .section-lead { margin-left: auto; margin-right: auto; }
+
+    /* ── THESIS ── */
+    #thesis { background: var(--white); }
+
+    .thesis-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .thesis-card {
+      background: var(--ice);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .thesis-card:hover { border-color: var(--frost); transform: translateY(-2px); }
+
+    .thesis-num {
+      font-family: Georgia, serif;
+      font-size: 1.8rem;
+      color: var(--frost-deep);
+      margin-bottom: 0.75rem;
+    }
+
+    .thesis-card h3 {
+      font-size: 1.05rem;
+      color: var(--navy);
+      margin-bottom: 0.5rem;
+    }
+
+    .thesis-card p {
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 720px) { .thesis-grid { grid-template-columns: 1fr; } }
+
+    /* ── CRITERIA ── */
+    #criteria {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    #criteria .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 6rem 2rem;
+    }
+
+    #criteria .section-eyebrow { color: var(--frost); }
+    #criteria .section-title { color: var(--white); }
+    #criteria .section-lead { color: var(--text-light); }
+
+    .criteria-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .criteria-card {
+      background: var(--navy-soft);
+      border: 1px solid rgba(91, 155, 213, 0.25);
+      border-radius: 8px;
+      padding: 1.6rem 1.75rem;
+    }
+
+    .criteria-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--frost);
+      margin-bottom: 0.6rem;
+    }
+
+    .criteria-value {
+      font-family: Georgia, serif;
+      font-size: 1.25rem;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+      line-height: 1.4;
+    }
+
+    .criteria-card p {
+      font-size: 0.84rem;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    @media (max-width: 720px) { .criteria-grid { grid-template-columns: 1fr; } }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      counter-reset: step;
+    }
+
+    .process-step {
+      position: relative;
+      padding: 1.5rem 1.4rem;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+
+    .process-step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      font-family: Georgia, serif;
+      font-size: 1.6rem;
+      color: var(--frost);
+      display: block;
+      margin-bottom: 0.6rem;
+    }
+
+    .process-step h3 {
+      font-size: 0.98rem;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .process-step p {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .process-note {
+      margin-top: 2rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+
+    @media (max-width: 880px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .process-steps { grid-template-columns: 1fr; } }
+
+    /* ── WHY ── */
+    #why { background: var(--ice); }
+
+    #why .section { padding: 6rem 2rem; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .why-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.75rem;
+    }
+
+    .why-icon {
+      width: 2.4rem;
+      height: 2.4rem;
+      border-radius: 50%;
+      background: var(--frost-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.05rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .why-card h3 {
+      font-size: 1rem;
+      color: var(--navy);
+      margin-bottom: 0.45rem;
+    }
+
+    .why-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    @media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* ── FOUNDER ── */
+    .founder-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .founder-photo {
+      aspect-ratio: 4/5;
+      background: linear-gradient(160deg, var(--ice) 0%, var(--frost-soft) 100%);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.8rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .founder-name {
+      font-size: 1.5rem;
+      color: var(--navy);
+      margin-bottom: 0.25rem;
+    }
+
+    .founder-role {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--frost-deep);
+      margin-bottom: 1.25rem;
+    }
+
+    .founder-bio p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .founder-bio strong { color: var(--text); font-weight: 600; }
+
+    @media (max-width: 720px) {
+      .founder-wrap { grid-template-columns: 1fr; }
+      .founder-photo { max-width: 280px; }
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--navy);
+      color: var(--white);
+      text-align: center;
+    }
+
+    #contact .section { padding: 6rem 2rem 5rem; }
+
+    #contact .section-eyebrow { color: var(--frost); }
+
+    #contact h2 {
+      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      line-height: 1.25;
+    }
+
+    #contact .section-lead {
+      color: var(--text-light);
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-email {
+      font-family: Georgia, serif;
+      font-size: 1.1rem;
+      color: var(--frost);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(91, 155, 213, 0.4);
+      padding-bottom: 2px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-email:hover { color: var(--white); border-color: var(--white); }
+
+    .contact-confidential {
+      margin-top: 2.5rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(91, 155, 213, 0.18);
+      padding: 1.75rem 2rem;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+    }
+
+    /* ── REVEAL ANIMATION ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo">Snow<span>Birdian</span></a>
+      <div class="nav-links">
+        <a href="#thesis">Approach</a>
+        <a href="#criteria">Criteria</a>
+        <a href="#process">Process</a>
+        <a href="#founder">Founder</a>
+        <a href="#contact" class="nav-cta">Start a Conversation</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section id="hero">
+    <p class="hero-eyebrow">SnowBirdian Acquisitions</p>
+    <h1 class="hero-headline">A permanent home for the business you built</h1>
+    <p class="hero-sub">SnowBirdian acquires and operates great small businesses. Confidential conversations, fair offers, and a steward who cares about your team, your customers, and your legacy.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">Sell Your Business</a>
+      <a href="#thesis" class="btn btn-ghost">Our Approach</a>
+    </div>
+  </section>
+
+  <!-- ── THESIS ── -->
+  <section id="thesis" class="section">
+    <p class="section-eyebrow">Our Approach</p>
+    <h2 class="section-title">Buy well. Operate with care. Hold for the long term.</h2>
+    <p class="section-lead">We are not a broker and not a flipper. We buy businesses to own and grow them — keeping what works, investing where it counts.</p>
+    <div class="thesis-grid">
+      <div class="thesis-card reveal">
+        <p class="thesis-num">01</p>
+        <h3>Long-term ownership</h3>
+        <p>No fund deadlines, no quick resale. We acquire with the intent to hold and operate for years, not quarters.</p>
+      </div>
+      <div class="thesis-card reveal">
+        <p class="thesis-num">02</p>
+        <h3>People stay first</h3>
+        <p>Your employees and customers made the business what it is. Continuity for them is a core part of every deal we do.</p>
+      </div>
+      <div class="thesis-card reveal">
+        <p class="thesis-num">03</p>
+        <h3>Modern operations</h3>
+        <p>We bring technology, automation, and disciplined financial management to strengthen what you built — not replace it.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CRITERIA ── -->
+  <section id="criteria">
+    <div class="section-inner">
+      <p class="section-eyebrow">Acquisition Criteria</p>
+      <h2 class="section-title">What we look for</h2>
+      <p class="section-lead">If your business fits most of these, we should talk. If you're not sure — reach out anyway. Every conversation is confidential.</p>
+      <div class="criteria-grid">
+        <div class="criteria-card reveal">
+          <p class="criteria-label">Business Profile</p>
+          <p class="criteria-value">Established &amp; profitable</p>
+          <p>Stable operating history with consistent cash flow and a reason customers keep coming back.</p>
+        </div>
+        <div class="criteria-card reveal">
+          <p class="criteria-label">Size</p>
+          <p class="criteria-value">$100K — $1M+ in annual earnings</p>
+          <p>Flexible on size for the right business — owner earnings, SDE, or EBITDA.</p>
+        </div>
+        <div class="criteria-card reveal">
+          <p class="criteria-label">Industries</p>
+          <p class="criteria-value">Services, recurring revenue, niche leaders</p>
+          <p>Home services, B2B services, technology-enabled businesses, and durable local franchises.</p>
+        </div>
+        <div class="criteria-card reveal">
+          <p class="criteria-label">Geography</p>
+          <p class="criteria-value">Arizona &amp; the Sun Belt — open to remote-capable</p>
+          <p>Based in Scottsdale, AZ. Businesses that can be operated or overseen from anywhere are welcome.</p>
+        </div>
+        <div class="criteria-card reveal">
+          <p class="criteria-label">Situations</p>
+          <p class="criteria-value">Retirement, relocation, new chapter</p>
+          <p>Owners ready to step back — whether fully exiting or staying involved through a transition.</p>
+        </div>
+        <div class="criteria-card reveal">
+          <p class="criteria-label">Deal Style</p>
+          <p class="criteria-value">Straightforward &amp; seller-friendly</p>
+          <p>Clear terms, reasonable diligence, and structures that work for both sides — including seller financing where it fits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROCESS ── -->
+  <section id="process" class="section centered">
+    <p class="section-eyebrow">The Process</p>
+    <h2 class="section-title">From first call to close</h2>
+    <p class="section-lead">A clear, respectful process designed to protect your confidentiality and your time.</p>
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <h3>Intro conversation</h3>
+        <p>A confidential, no-pressure call to understand your business and your goals.</p>
+      </div>
+      <div class="process-step reveal">
+        <h3>NDA &amp; review</h3>
+        <p>We sign an NDA, review high-level financials, and confirm mutual fit.</p>
+      </div>
+      <div class="process-step reveal">
+        <h3>Offer &amp; diligence</h3>
+        <p>A written offer with clear terms, followed by focused, reasonable due diligence.</p>
+      </div>
+      <div class="process-step reveal">
+        <h3>Close &amp; transition</h3>
+        <p>We close on schedule and work with you on a transition that sets everyone up to win.</p>
+      </div>
+    </div>
+    <p class="process-note">Typical timeline: 60–90 days from first conversation to close.</p>
+  </section>
+
+  <!-- ── WHY ── -->
+  <div id="why">
+    <section class="section centered">
+      <p class="section-eyebrow">Why SnowBirdian</p>
+      <h2 class="section-title">Selling to us is different</h2>
+      <div class="why-grid" style="margin-top: 2.5rem;">
+        <div class="why-card reveal">
+          <div class="why-icon">🤝</div>
+          <h3>Direct &amp; confidential</h3>
+          <p>You deal directly with the buyer — no brokers required, no word getting out before you're ready.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">⚖️</div>
+          <h3>Fair, transparent offers</h3>
+          <p>Valuations grounded in real financials, explained clearly. No re-trading games at the finish line.</p>
+        </div>
+        <div class="why-card reveal">
+          <div class="why-icon">🌱</div>
+          <h3>Your legacy continues</h3>
+          <p>The name, the team, and the relationships you built stay intact — and get the investment they deserve.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ── FOUNDER ── -->
+  <section id="founder" class="section">
+    <p class="section-eyebrow">The Founder</p>
+    <h2 class="section-title">Who you'll be working with</h2>
+    <div class="founder-wrap" style="margin-top: 2.5rem;">
+      <div class="founder-photo reveal">Photo coming soon</div>
+      <div class="founder-bio reveal">
+        <h3 class="founder-name serif">Dillon Ketcham</h3>
+        <p class="founder-role">Founder, SnowBirdian</p>
+        <p>Dillon is an entrepreneur and former <strong>financial advisor</strong> based in Scottsdale, Arizona. At Renaissance Financial he managed nearly <strong>$10 million in client assets</strong> with a 92% retention rate — experience that shaped how he evaluates businesses: cash flow first, relationships always.</p>
+        <p>Before that, he founded <strong>KAP 3D Virtual Tours and Drones</strong>, building a custom CRM, an SEO-driven web presence, and recurring revenue streams from the ground up. He knows what it takes to start, run, and grow a small business — and what owners sacrifice to do it.</p>
+        <p>SnowBirdian combines that operating experience with financial discipline to give owners a trustworthy exit and their businesses a permanent home.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACT ── -->
+  <section id="contact">
+    <div class="section">
+      <p class="section-eyebrow">Start a Conversation</p>
+      <h2 class="serif">Thinking about selling — now or someday?</h2>
+      <p class="section-lead">Even if you're a year or two out, the best exits start with an early, confidential conversation. No pressure, no obligation.</p>
+      <a class="contact-email" href="mailto:dketcham10@gmail.com">dketcham10@gmail.com</a>
+      <p class="contact-confidential">All inquiries are strictly confidential.</p>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>© 2026 SnowBirdian · Scottsdale, AZ</p>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
