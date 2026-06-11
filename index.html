@@ -3,29 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SnowBirdian — Business Acquisitions</title>
-  <meta name="description" content="SnowBirdian acquires and operates great small businesses. Confidential conversations, fair offers, and a long-term home for what you built." />
-  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <title>SnowBirdian — Build Better. Buy Smarter.</title>
+  <meta name="description" content="SnowBirdian helps businesses improve performance and unlock value — business & technology advisory plus acquisition & due diligence services." />
+  <link rel="icon" type="image/png" href="assets/logo-light.png" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #07090e;
-      --surface: #0e1219;
-      --surface-2: #121826;
-      --border: #1d2433;
-      --ice: #4db5ff;
-      --ice-deep: #2563eb;
-      --ice-soft: rgba(77, 181, 255, 0.10);
-      --flame: #ff9a3d;
-      --flame-deep: #e0533d;
-      --flame-soft: rgba(255, 154, 61, 0.10);
-      --text: #e9edf4;
-      --text-muted: #8a96a8;
-      --gradient: linear-gradient(90deg, var(--ice) 0%, var(--flame) 100%);
+      --blue: #2563eb;
+      --blue-bright: #4db5ff;
+      --blue-soft: rgba(37, 99, 235, 0.08);
+      --orange: #f97f2e;
+      --orange-deep: #e0533d;
+      --orange-soft: rgba(249, 127, 46, 0.09);
+      --text: #15202e;
+      --text-muted: #5d6e7f;
+      --bg: #ffffff;
+      --surface: #f5f8fb;
+      --border: #e3eaf1;
+      --gradient: linear-gradient(90deg, var(--blue) 0%, var(--orange) 100%);
     }
 
-    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5.5rem; }
 
     body {
       background: var(--bg);
@@ -43,6 +42,18 @@
       color: transparent;
     }
 
+    /* ── SCROLL PROGRESS ── */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--gradient);
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
     /* ── NAV ── */
     .nav {
       position: fixed;
@@ -50,15 +61,15 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(7, 9, 14, 0.88);
+      background: rgba(255, 255, 255, 0.92);
       backdrop-filter: blur(12px);
       border-bottom: 1px solid var(--border);
     }
 
     .nav-inner {
-      max-width: 1100px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding: 0.8rem 2rem;
+      padding: 0.7rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -68,48 +79,46 @@
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.55rem;
       font-family: Georgia, serif;
       font-size: 1.15rem;
       color: var(--text);
       text-decoration: none;
-      letter-spacing: 0.01em;
     }
 
-    .nav-logo img { height: 2.1rem; width: auto; mix-blend-mode: screen; }
+    .nav-logo img { height: 2.3rem; width: auto; mix-blend-mode: multiply; }
+    .nav-logo .word-snow { color: var(--blue); }
+    .nav-logo .word-birdian { color: var(--orange); }
 
-    .nav-logo .word-snow { color: var(--ice); }
-    .nav-logo .word-birdian { color: var(--flame); }
-
-    .nav-links {
-      display: flex;
-      gap: 1.75rem;
-      align-items: center;
-    }
+    .nav-links { display: flex; gap: 1.6rem; align-items: center; }
 
     .nav-links a {
       font-size: 0.78rem;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-muted);
       text-decoration: none;
       transition: color 0.2s;
+      padding-bottom: 2px;
+      border-bottom: 2px solid transparent;
     }
 
-    .nav-links a:hover { color: var(--ice); }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links a.active { color: var(--blue); border-color: var(--blue); }
 
     .nav-cta {
       background: var(--gradient);
-      color: #0a0c12 !important;
+      color: #fff !important;
       font-weight: 600;
       padding: 0.55rem 1.2rem;
-      border-radius: 4px;
-      transition: opacity 0.2s;
+      border-radius: 6px;
+      border-bottom: none !important;
+      transition: opacity 0.2s, transform 0.2s;
     }
 
-    .nav-cta:hover { opacity: 0.88; }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
 
-    @media (max-width: 640px) {
+    @media (max-width: 760px) {
       .nav-links a:not(.nav-cta) { display: none; }
     }
 
@@ -131,406 +140,445 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 45% 40% at 28% 30%, rgba(37, 99, 235, 0.16) 0%, transparent 70%),
-        radial-gradient(ellipse 45% 40% at 72% 32%, rgba(224, 83, 61, 0.14) 0%, transparent 70%);
+        radial-gradient(ellipse 45% 40% at 22% 25%, rgba(77, 181, 255, 0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 45% 40% at 78% 30%, rgba(249, 127, 46, 0.11) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .hero-logo {
-      width: clamp(110px, 18vw, 170px);
+      width: clamp(120px, 17vw, 180px);
       height: auto;
-      margin-bottom: 1.75rem;
-      mix-blend-mode: screen;
+      margin-bottom: 1.5rem;
+      animation: float 5s ease-in-out infinite;
+      mix-blend-mode: multiply;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
     }
 
     .hero-eyebrow {
-      font-size: 0.72rem;
-      letter-spacing: 0.28em;
+      font-size: 0.74rem;
+      letter-spacing: 0.26em;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 1.4rem;
       font-weight: 600;
     }
 
     .hero-headline {
-      font-size: clamp(2.4rem, 6vw, 4.25rem);
-      line-height: 1.12;
-      color: var(--text);
-      max-width: 18ch;
-      margin-bottom: 1.5rem;
+      font-size: clamp(2.6rem, 7vw, 4.6rem);
+      line-height: 1.1;
+      margin-bottom: 1.4rem;
     }
 
+    .hero-headline .hl-build { color: var(--blue); }
+    .hero-headline .hl-buy { color: var(--orange); }
+
     .hero-sub {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      font-size: clamp(0.95rem, 2vw, 1.12rem);
       color: var(--text-muted);
-      max-width: 36rem;
-      margin-bottom: 2.5rem;
+      max-width: 40rem;
+      margin-bottom: 2.6rem;
       font-weight: 300;
     }
 
-    .hero-actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
     .btn {
       display: inline-block;
       font-size: 0.8rem;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       text-decoration: none;
-      padding: 0.9rem 1.9rem;
-      border-radius: 4px;
+      padding: 0.95rem 1.9rem;
+      border-radius: 6px;
+      font-weight: 600;
       transition: all 0.2s;
     }
 
-    .btn-primary {
-      background: var(--gradient);
-      color: #0a0c12;
-      font-weight: 600;
-      border: none;
+    .btn-blue { background: var(--blue); color: #fff; }
+    .btn-blue:hover { background: #1d4fc4; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.25); }
+
+    .btn-orange { background: var(--orange); color: #fff; }
+    .btn-orange:hover { background: #e06a1b; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,127,46,0.25); }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: var(--text-muted);
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
     }
 
-    .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+    .scroll-cue svg { animation: bounce 2s ease-in-out infinite; }
 
-    .btn-ghost {
-      color: var(--text);
-      border: 1px solid var(--border);
-      background: transparent;
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(5px); }
     }
-
-    .btn-ghost:hover { border-color: var(--ice); color: var(--ice); }
 
     /* ── SECTIONS ── */
-    .section {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
+    .section { max-width: 1140px; margin: 0 auto; padding: 5.5rem 2rem; }
 
     .section-eyebrow {
       font-size: 0.7rem;
-      letter-spacing: 0.25em;
+      letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--ice);
-      margin-bottom: 0.85rem;
-      font-weight: 600;
+      color: var(--blue);
+      margin-bottom: 0.8rem;
+      font-weight: 700;
     }
 
-    .section-eyebrow.warm { color: var(--flame); }
+    .section-eyebrow.warm { color: var(--orange); }
 
     .section-title {
-      font-size: clamp(1.7rem, 4vw, 2.4rem);
-      color: var(--text);
-      line-height: 1.25;
+      font-size: clamp(1.7rem, 4vw, 2.5rem);
+      line-height: 1.22;
       margin-bottom: 1rem;
-      max-width: 24ch;
     }
 
     .section-lead {
-      font-size: 0.95rem;
+      font-size: 0.96rem;
       color: var(--text-muted);
-      max-width: 38rem;
-      margin-bottom: 3rem;
+      max-width: 40rem;
+      margin-bottom: 2.8rem;
       font-weight: 300;
     }
 
     .centered { text-align: center; }
     .centered .section-title, .centered .section-lead { margin-left: auto; margin-right: auto; }
 
-    /* ── THESIS ── */
-    .thesis-grid {
+    /* ── PILLARS ── */
+    .pillars-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
     }
 
-    .thesis-card {
-      background: var(--surface);
+    .pillar {
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-
-    .thesis-card:hover { border-color: var(--ice); transform: translateY(-2px); }
-    .thesis-card:nth-child(2):hover { border-color: var(--flame); }
-
-    .thesis-num {
-      font-family: Georgia, serif;
-      font-size: 1.8rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .thesis-card h3 {
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-    }
-
-    .thesis-card p {
-      font-size: 0.86rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    @media (max-width: 720px) { .thesis-grid { grid-template-columns: 1fr; } }
-
-    /* ── CRITERIA ── */
-    #criteria {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    #criteria .section-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 6rem 2rem;
-    }
-
-    .criteria-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-    }
-
-    .criteria-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.6rem 1.75rem;
-      transition: border-color 0.2s;
-    }
-
-    .criteria-card:nth-child(odd):hover { border-color: rgba(77, 181, 255, 0.5); }
-    .criteria-card:nth-child(even):hover { border-color: rgba(255, 154, 61, 0.5); }
-
-    .criteria-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
-      font-weight: 600;
-    }
-
-    .criteria-card:nth-child(odd) .criteria-label { color: var(--ice); }
-    .criteria-card:nth-child(even) .criteria-label { color: var(--flame); }
-
-    .criteria-value {
-      font-family: Georgia, serif;
-      font-size: 1.25rem;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-      line-height: 1.4;
-    }
-
-    .criteria-card p {
-      font-size: 0.84rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 720px) { .criteria-grid { grid-template-columns: 1fr; } }
-
-    /* ── PROCESS ── */
-    .process-steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.25rem;
-      counter-reset: step;
-    }
-
-    .process-step {
-      position: relative;
-      padding: 1.5rem 1.4rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      text-align: left;
-      transition: border-color 0.2s;
-    }
-
-    .process-step:hover { border-color: rgba(77, 181, 255, 0.45); }
-
-    .process-step::before {
-      counter-increment: step;
-      content: counter(step, decimal-leading-zero);
-      font-family: Georgia, serif;
-      font-size: 1.6rem;
-      display: block;
-      margin-bottom: 0.6rem;
-      background: var(--gradient);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .process-step h3 {
-      font-size: 0.98rem;
-      color: var(--text);
-      margin-bottom: 0.4rem;
-    }
-
-    .process-step p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    .process-note {
-      margin-top: 2rem;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      text-align: center;
-      font-style: italic;
-    }
-
-    @media (max-width: 880px) { .process-steps { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px) { .process-steps { grid-template-columns: 1fr; } }
-
-    /* ── WHY ── */
-    #why {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .why-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .why-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.75rem;
-      text-align: left;
-    }
-
-    .why-icon {
-      width: 2.4rem;
-      height: 2.4rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.05rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .why-card:nth-child(1) .why-icon { background: var(--ice-soft); }
-    .why-card:nth-child(2) .why-icon { background: var(--flame-soft); }
-    .why-card:nth-child(3) .why-icon { background: var(--ice-soft); }
-
-    .why-card h3 {
-      font-size: 1rem;
-      color: var(--text);
-      margin-bottom: 0.45rem;
-    }
-
-    .why-card p {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-      line-height: 1.65;
-    }
-
-    @media (max-width: 720px) { .why-grid { grid-template-columns: 1fr; } }
-
-    /* ── FOUNDER ── */
-    .founder-wrap {
-      display: grid;
-      grid-template-columns: 1fr 1.6fr;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .founder-photo {
-      aspect-ratio: 4/5;
-      background:
-        linear-gradient(160deg, rgba(37, 99, 235, 0.12) 0%, rgba(224, 83, 61, 0.12) 100%),
-        var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.8rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .founder-name {
-      font-size: 1.5rem;
-      color: var(--text);
-      margin-bottom: 0.25rem;
-    }
-
-    .founder-role {
-      font-size: 0.8rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--flame);
-      margin-bottom: 1.25rem;
-      font-weight: 600;
-    }
-
-    .founder-bio p {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-
-    .founder-bio strong { color: var(--text); font-weight: 600; }
-
-    @media (max-width: 720px) {
-      .founder-wrap { grid-template-columns: 1fr; }
-      .founder-photo { max-width: 280px; }
-    }
-
-    /* ── CONTACT ── */
-    #contact {
-      text-align: center;
+      border-radius: 14px;
+      padding: 2.1rem 2rem;
+      background: var(--bg);
+      transition: transform 0.25s, box-shadow 0.25s;
       position: relative;
       overflow: hidden;
-      border-top: 1px solid var(--border);
     }
 
-    #contact::before {
+    .pillar:hover { transform: translateY(-4px); }
+
+    .pillar::before {
       content: '';
       position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 40% 55% at 25% 80%, rgba(37, 99, 235, 0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 55% at 75% 80%, rgba(224, 83, 61, 0.12) 0%, transparent 70%);
-      pointer-events: none;
+      top: 0; left: 0; right: 0;
+      height: 4px;
     }
 
-    #contact .section { padding: 6rem 2rem 5rem; position: relative; }
+    .pillar-blue::before { background: linear-gradient(90deg, var(--blue), var(--blue-bright)); }
+    .pillar-orange::before { background: linear-gradient(90deg, var(--orange), var(--orange-deep)); }
 
-    #contact h2 {
-      font-size: clamp(1.8rem, 4.5vw, 2.6rem);
-      color: var(--text);
+    .pillar-blue:hover { box-shadow: 0 16px 40px rgba(37, 99, 235, 0.13); }
+    .pillar-orange:hover { box-shadow: 0 16px 40px rgba(249, 127, 46, 0.13); }
+
+    .pillar-num {
+      font-family: Georgia, serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.12em;
+      margin-bottom: 0.7rem;
+    }
+
+    .pillar-blue .pillar-num { color: var(--blue); }
+    .pillar-orange .pillar-num { color: var(--orange); }
+
+    .pillar h3 {
+      font-size: 1.45rem;
+      margin-bottom: 0.3rem;
+      line-height: 1.3;
+    }
+
+    .pillar-tagline {
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
       margin-bottom: 1rem;
-      line-height: 1.25;
     }
 
-    #contact .section-lead {
-      margin-left: auto;
-      margin-right: auto;
-      margin-bottom: 2.5rem;
+    .pillar-blue .pillar-tagline { color: var(--blue); }
+    .pillar-orange .pillar-tagline { color: var(--orange); }
+
+    .pillar-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.7;
     }
+
+    /* tabs inside pillars */
+    .tab-row { display: flex; gap: 0.5rem; margin-bottom: 1.2rem; }
+
+    .tab-btn {
+      flex: 1;
+      font-family: inherit;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 0.6rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pillar-blue .tab-btn.active { background: var(--blue-soft); border-color: var(--blue); color: var(--blue); }
+    .pillar-orange .tab-btn.active { background: var(--orange-soft); border-color: var(--orange); color: var(--orange); }
+    .tab-btn:hover:not(.active) { border-color: #c4d2e0; color: var(--text); }
+
+    .tab-panel { display: none; animation: fadeIn 0.35s ease; }
+    .tab-panel.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .check-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+
+    .check-list li {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      padding-left: 1.6rem;
+      position: relative;
+      line-height: 1.55;
+    }
+
+    .check-list li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.32em;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background-size: 0.6rem;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .pillar-blue .check-list li::before {
+      background-color: var(--blue-soft);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232563eb' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+
+    .pillar-orange .check-list li::before {
+      background-color: var(--orange-soft);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97f2e' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+
+    .quote-list li { font-style: italic; }
+
+    @media (max-width: 820px) { .pillars-grid { grid-template-columns: 1fr; } }
+
+    /* ── PROCESS STEPPER ── */
+    #consulting { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+
+    .stepper {
+      display: flex;
+      gap: 0.6rem;
+      margin-bottom: 1.6rem;
+      flex-wrap: wrap;
+    }
+
+    .step-btn {
+      flex: 1;
+      min-width: 130px;
+      font-family: inherit;
+      border: 1px solid var(--border);
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 1rem 0.8rem;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.22s;
+      position: relative;
+    }
+
+    .step-btn .step-num {
+      font-family: Georgia, serif;
+      font-size: 1.3rem;
+      color: var(--blue);
+      display: block;
+      margin-bottom: 0.2rem;
+      transition: color 0.2s;
+    }
+
+    .step-btn .step-name {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: 0.04em;
+    }
+
+    .step-btn:hover { border-color: var(--blue); transform: translateY(-2px); }
+
+    .step-btn.active {
+      background: var(--blue);
+      border-color: var(--blue);
+      box-shadow: 0 10px 26px rgba(37, 99, 235, 0.25);
+    }
+
+    .step-btn.active .step-num, .step-btn.active .step-name { color: #fff; }
+
+    .step-detail {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.8rem 2rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .step-detail h3 { font-size: 1.25rem; margin-bottom: 0.4rem; }
+    .step-detail p { font-size: 0.92rem; color: var(--text-muted); }
+
+    .outcome-banner {
+      margin-top: 1.6rem;
+      padding: 1.2rem 1.6rem;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      text-align: center;
+      font-family: Georgia, serif;
+    }
+
+    .outcome-blue { background: var(--blue-soft); color: var(--blue); border: 1px solid rgba(37, 99, 235, 0.2); }
+    .outcome-orange { background: var(--orange-soft); color: #c9551f; border: 1px solid rgba(249, 127, 46, 0.25); }
+
+    /* ── ACCORDION (diligence) ── */
+    .accordion { display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .acc-item {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .acc-item.open { border-color: var(--orange); box-shadow: 0 8px 24px rgba(249, 127, 46, 0.10); }
+
+    .acc-head {
+      width: 100%;
+      font-family: inherit;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.4rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+      text-align: left;
+    }
+
+    .acc-num {
+      font-family: Georgia, serif;
+      font-size: 1.15rem;
+      color: var(--orange);
+      min-width: 1.6rem;
+    }
+
+    .acc-title { font-size: 1rem; font-weight: 700; color: var(--text); flex: 1; }
+
+    .acc-arrow {
+      width: 1.5rem; height: 1.5rem;
+      border-radius: 50%;
+      background: var(--orange-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+      color: var(--orange);
+      font-size: 0.8rem;
+    }
+
+    .acc-item.open .acc-arrow { transform: rotate(180deg); }
+
+    .acc-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+    }
+
+    .acc-body-inner { padding: 0 1.4rem 1.3rem 4rem; }
+
+    .acc-body .check-list li::before {
+      background-color: var(--orange-soft);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23f97f2e' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E");
+    }
+
+    @media (max-width: 560px) { .acc-body-inner { padding-left: 1.4rem; } }
+
+    /* ── POSITION BANNER ── */
+    #position {
+      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(249, 127, 46, 0.05) 100%);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .position-statement {
+      font-size: clamp(1.9rem, 5vw, 3.1rem);
+      font-family: Georgia, serif;
+      line-height: 1.25;
+      margin-bottom: 2.4rem;
+    }
+
+    .position-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .position-col {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.6rem;
+      transition: transform 0.22s, box-shadow 0.22s;
+    }
+
+    .position-col:hover { transform: translateY(-3px); }
+    .position-col:first-child:hover { box-shadow: 0 12px 30px rgba(37,99,235,0.13); }
+    .position-col:last-child:hover { box-shadow: 0 12px 30px rgba(249,127,46,0.13); }
+
+    .position-col h3 { font-size: 1.2rem; margin-bottom: 0.3rem; }
+    .position-col:first-child h3 { color: var(--blue); }
+    .position-col:last-child h3 { color: var(--orange); }
+
+    .position-col p { font-size: 0.86rem; color: var(--text-muted); }
+
+    @media (max-width: 620px) { .position-cols { grid-template-columns: 1fr; } }
+
+    /* ── CONTACT ── */
+    #contact { text-align: center; }
 
     .contact-email {
       font-family: Georgia, serif;
-      font-size: 1.1rem;
+      font-size: 1.25rem;
       text-decoration: none;
-      border-bottom: 1px solid rgba(255, 154, 61, 0.45);
+      border-bottom: 2px solid rgba(249, 127, 46, 0.4);
       padding-bottom: 2px;
       transition: border-color 0.2s;
       background: var(--gradient);
@@ -539,11 +587,11 @@
       color: transparent;
     }
 
-    .contact-email:hover { border-color: var(--ice); }
+    .contact-email:hover { border-color: var(--blue); }
 
     .contact-confidential {
-      margin-top: 2.5rem;
-      font-size: 0.75rem;
+      margin-top: 2.2rem;
+      font-size: 0.76rem;
       letter-spacing: 0.08em;
       color: var(--text-muted);
     }
@@ -551,49 +599,42 @@
     /* ── FOOTER ── */
     footer {
       border-top: 1px solid var(--border);
-      padding: 1.75rem 2rem;
+      padding: 2rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
     }
 
-    footer img { height: 1.6rem; width: auto; opacity: 0.85; mix-blend-mode: screen; }
+    footer img { height: 2rem; width: auto; mix-blend-mode: multiply; }
+    footer p { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted); }
 
-    footer p {
-      font-size: 0.72rem;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-
-    /* ── REVEAL ANIMATION ── */
+    /* ── REVEAL ── */
     .reveal {
       opacity: 0;
-      transform: translateY(18px);
+      transform: translateY(20px);
       transition: opacity 0.55s ease, transform 0.55s ease;
     }
 
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
   </style>
 </head>
 <body>
+
+  <div id="progress"></div>
 
   <!-- ── NAV ── -->
   <nav class="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <img src="assets/logo.png" alt="SnowBirdian logo" />
+        <img src="assets/logo-light.png" alt="SnowBirdian logo" />
         <span><span class="word-snow">Snow</span><span class="word-birdian">Birdian</span></span>
       </a>
       <div class="nav-links">
-        <a href="#thesis">Approach</a>
-        <a href="#criteria">Criteria</a>
-        <a href="#process">Process</a>
-        <a href="#founder">Founder</a>
+        <a href="#pillars" data-nav>What We Do</a>
+        <a href="#consulting" data-nav>Consulting</a>
+        <a href="#diligence" data-nav>Due Diligence</a>
         <a href="#contact" class="nav-cta">Start a Conversation</a>
       </div>
     </div>
@@ -601,175 +642,338 @@
 
   <!-- ── HERO ── -->
   <section id="hero">
-    <img class="hero-logo" src="assets/logo.png" alt="SnowBirdian phoenix logo" />
-    <p class="hero-eyebrow grad-text">SnowBirdian Acquisitions</p>
-    <h1 class="hero-headline">A permanent home for the business you built</h1>
-    <p class="hero-sub">SnowBirdian acquires and operates great small businesses. Confidential conversations, fair offers, and a steward who cares about your team, your customers, and your legacy.</p>
+    <img class="hero-logo" src="assets/logo-light.png" alt="SnowBirdian phoenix logo" />
+    <p class="hero-eyebrow">One Company. Two Ways We Create Value.</p>
+    <h1 class="hero-headline"><span class="hl-build">Build Better.</span> <span class="hl-buy">Buy Smarter.</span></h1>
+    <p class="hero-sub">SnowBirdian helps businesses improve performance and unlock value — practical business &amp; technology consulting on one side, rigorous acquisition &amp; due diligence services on the other.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn btn-primary">Sell Your Business</a>
-      <a href="#thesis" class="btn btn-ghost">Our Approach</a>
+      <a href="#pillars" class="btn btn-blue">Improve the Business</a>
+      <a href="#diligence" class="btn btn-orange">Unlock Business Value</a>
+    </div>
+    <div class="scroll-cue">
+      <span>Scroll</span>
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+        <path d="M7 1v12M1 7l6 6 6-6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     </div>
   </section>
 
-  <!-- ── THESIS ── -->
-  <section id="thesis" class="section">
-    <p class="section-eyebrow">Our Approach</p>
-    <h2 class="section-title">Buy well. Operate with care. Hold for the long term.</h2>
-    <p class="section-lead">We are not a broker and not a flipper. We buy businesses to own and grow them — keeping what works, investing where it counts.</p>
-    <div class="thesis-grid">
-      <div class="thesis-card reveal">
-        <p class="thesis-num" style="color: var(--ice);">01</p>
-        <h3>Long-term ownership</h3>
-        <p>No fund deadlines, no quick resale. We acquire with the intent to hold and operate for years, not quarters.</p>
-      </div>
-      <div class="thesis-card reveal">
-        <p class="thesis-num" style="color: var(--flame);">02</p>
-        <h3>People stay first</h3>
-        <p>Your employees and customers made the business what it is. Continuity for them is a core part of every deal we do.</p>
-      </div>
-      <div class="thesis-card reveal">
-        <p class="thesis-num grad-text">03</p>
-        <h3>Modern operations</h3>
-        <p>We bring technology, automation, and disciplined financial management to strengthen what you built — not replace it.</p>
-      </div>
+  <!-- ── TWO PILLARS ── -->
+  <section id="pillars" class="section centered">
+    <p class="section-eyebrow">What We Do</p>
+    <h2 class="section-title">We help businesses solve two big challenges</h2>
+    <p class="section-lead">Whether you're growing a company or evaluating one, we bring clarity, discipline, and execution.</p>
+
+    <div class="pillars-grid">
+      <!-- Pillar 1 -->
+      <article class="pillar pillar-blue reveal" style="text-align:left;">
+        <p class="pillar-num">01</p>
+        <h3>Improve the Business</h3>
+        <p class="pillar-tagline">Business &amp; Technology Advisory</p>
+        <p class="pillar-desc">When owners and leadership teams need clarity, growth, efficiency, or better systems, we help them identify bottlenecks and implement practical solutions.</p>
+        <div class="tab-row" data-tabs>
+          <button class="tab-btn active" data-tab="p1-problems">Problems We Solve</button>
+          <button class="tab-btn" data-tab="p1-deliver">What We Deliver</button>
+        </div>
+        <div class="tab-panel active" id="p1-problems">
+          <ul class="check-list">
+            <li>Revenue growth has stalled</li>
+            <li>Operations are inefficient</li>
+            <li>Technology is outdated or disconnected</li>
+            <li>Teams lack visibility into performance</li>
+            <li>Owners are overwhelmed by day-to-day operations</li>
+            <li>Scaling is creating complexity</li>
+            <li>Strategic direction is unclear</li>
+          </ul>
+        </div>
+        <div class="tab-panel" id="p1-deliver">
+          <ul class="check-list">
+            <li>Growth strategies</li>
+            <li>Process improvement</li>
+            <li>Technology modernization</li>
+            <li>Data and reporting systems</li>
+            <li>Operational efficiency</li>
+            <li>Leadership support</li>
+            <li>Execution roadmaps</li>
+          </ul>
+        </div>
+      </article>
+
+      <!-- Pillar 2 -->
+      <article class="pillar pillar-orange reveal" style="text-align:left;">
+        <p class="pillar-num">02</p>
+        <h3>Unlock Business Value</h3>
+        <p class="pillar-tagline">Acquisition &amp; Investment Services</p>
+        <p class="pillar-desc">When owners are considering a sale, acquisition, partnership, or investment opportunity, we help evaluate risk, uncover value, and support informed decisions.</p>
+        <div class="tab-row" data-tabs>
+          <button class="tab-btn active" data-tab="p2-problems">Problems We Solve</button>
+          <button class="tab-btn" data-tab="p2-deliver">What We Deliver</button>
+        </div>
+        <div class="tab-panel active" id="p2-problems">
+          <ul class="check-list quote-list">
+            <li>"Is this company worth buying?"</li>
+            <li>"What risks am I not seeing?"</li>
+            <li>"How do I prepare my company for sale?"</li>
+            <li>"Can this acquisition create value?"</li>
+            <li>"What should I negotiate before closing?"</li>
+            <li>"How healthy is this business really?"</li>
+          </ul>
+        </div>
+        <div class="tab-panel" id="p2-deliver">
+          <ul class="check-list">
+            <li>Due diligence</li>
+            <li>Business assessments</li>
+            <li>Acquisition analysis</li>
+            <li>Financial and operational reviews</li>
+            <li>Technology assessments</li>
+            <li>Risk identification</li>
+            <li>Value creation planning</li>
+          </ul>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- ── CRITERIA ── -->
-  <section id="criteria">
-    <div class="section-inner">
-      <p class="section-eyebrow warm">Acquisition Criteria</p>
-      <h2 class="section-title">What we look for</h2>
-      <p class="section-lead">If your business fits most of these, we should talk. If you're not sure — reach out anyway. Every conversation is confidential.</p>
-      <div class="criteria-grid">
-        <div class="criteria-card reveal">
-          <p class="criteria-label">Business Profile</p>
-          <p class="criteria-value">Established &amp; profitable</p>
-          <p>Stable operating history with consistent cash flow and a reason customers keep coming back.</p>
-        </div>
-        <div class="criteria-card reveal">
-          <p class="criteria-label">Size</p>
-          <p class="criteria-value">$100K — $1M+ in annual earnings</p>
-          <p>Flexible on size for the right business — owner earnings, SDE, or EBITDA.</p>
-        </div>
-        <div class="criteria-card reveal">
-          <p class="criteria-label">Industries</p>
-          <p class="criteria-value">Services, recurring revenue, niche leaders</p>
-          <p>Home services, B2B services, technology-enabled businesses, and durable local franchises.</p>
-        </div>
-        <div class="criteria-card reveal">
-          <p class="criteria-label">Geography</p>
-          <p class="criteria-value">Arizona &amp; the Sun Belt — open to remote-capable</p>
-          <p>Based in Scottsdale, AZ. Businesses that can be operated or overseen from anywhere are welcome.</p>
-        </div>
-        <div class="criteria-card reveal">
-          <p class="criteria-label">Situations</p>
-          <p class="criteria-value">Retirement, relocation, new chapter</p>
-          <p>Owners ready to step back — whether fully exiting or staying involved through a transition.</p>
-        </div>
-        <div class="criteria-card reveal">
-          <p class="criteria-label">Deal Style</p>
-          <p class="criteria-value">Straightforward &amp; seller-friendly</p>
-          <p>Clear terms, reasonable diligence, and structures that work for both sides — including seller financing where it fits.</p>
-        </div>
+  <!-- ── CONSULTING PROCESS ── -->
+  <section id="consulting">
+    <div class="section centered">
+      <p class="section-eyebrow">Our Consulting Process</p>
+      <h2 class="section-title">Business Performance Assessment Framework</h2>
+      <p class="section-lead">Five steps from first conversation to measurable results. Click each step to explore.</p>
+
+      <div class="stepper" id="stepper">
+        <button class="step-btn active" data-step="0"><span class="step-num">1</span><span class="step-name">Discover</span></button>
+        <button class="step-btn" data-step="1"><span class="step-num">2</span><span class="step-name">Diagnose</span></button>
+        <button class="step-btn" data-step="2"><span class="step-num">3</span><span class="step-name">Design</span></button>
+        <button class="step-btn" data-step="3"><span class="step-num">4</span><span class="step-name">Deploy</span></button>
+        <button class="step-btn" data-step="4"><span class="step-num">5</span><span class="step-name">Drive Results</span></button>
       </div>
+
+      <div class="step-detail" id="step-detail" style="text-align:left;">
+        <h3 id="sd-title">Discover</h3>
+        <p id="sd-text">Understand goals, challenges, operations, and financial drivers.</p>
+      </div>
+
+      <div class="outcome-banner outcome-blue reveal">Outcome: A stronger, more scalable, and more profitable business.</div>
     </div>
   </section>
 
-  <!-- ── PROCESS ── -->
-  <section id="process" class="section centered">
-    <p class="section-eyebrow">The Process</p>
-    <h2 class="section-title">From first call to close</h2>
-    <p class="section-lead">A clear, respectful process designed to protect your confidentiality and your time.</p>
-    <div class="process-steps">
-      <div class="process-step reveal">
-        <h3>Intro conversation</h3>
-        <p>A confidential, no-pressure call to understand your business and your goals.</p>
+  <!-- ── DUE DILIGENCE ── -->
+  <section id="diligence" class="section">
+    <p class="section-eyebrow warm">Our Acquisition Due Diligence Process</p>
+    <h2 class="section-title">The Business Confidence Framework&trade;</h2>
+    <p class="section-lead">Six dimensions of analysis before any deal — expand each to see what we examine.</p>
+
+    <div class="accordion" id="accordion">
+      <div class="acc-item open">
+        <button class="acc-head"><span class="acc-num">1</span><span class="acc-title">Strategic Fit</span><span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ul class="check-list">
+              <li>Market position</li>
+              <li>Growth opportunities</li>
+              <li>Competitive landscape</li>
+              <li>Acquisition rationale</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="process-step reveal">
-        <h3>NDA &amp; review</h3>
-        <p>We sign an NDA, review high-level financials, and confirm mutual fit.</p>
+      <div class="acc-item">
+        <button class="acc-head"><span class="acc-num">2</span><span class="acc-title">Financial Review</span><span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ul class="check-list">
+              <li>Revenue quality</li>
+              <li>Profitability</li>
+              <li>Cash flow</li>
+              <li>Working capital</li>
+              <li>Debt and liabilities</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="process-step reveal">
-        <h3>Offer &amp; diligence</h3>
-        <p>A written offer with clear terms, followed by focused, reasonable due diligence.</p>
+      <div class="acc-item">
+        <button class="acc-head"><span class="acc-num">3</span><span class="acc-title">Operational Review</span><span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ul class="check-list">
+              <li>Processes</li>
+              <li>Personnel</li>
+              <li>Vendor dependencies</li>
+              <li>Customer concentration</li>
+              <li>Scalability</li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <div class="process-step reveal">
-        <h3>Close &amp; transition</h3>
-        <p>We close on schedule and work with you on a transition that sets everyone up to win.</p>
+      <div class="acc-item">
+        <button class="acc-head"><span class="acc-num">4</span><span class="acc-title">Technology Assessment</span><span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ul class="check-list">
+              <li>Systems and infrastructure</li>
+              <li>Cybersecurity</li>
+              <li>Software stack</li>
+              <li>Data quality</li>
+              <li>Integration requirements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><span class="acc-num">5</span><span class="acc-title">Risk Analysis</span><span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ul class="check-list">
+              <li>Legal exposure</li>
+              <li>Compliance concerns</li>
+              <li>Contract review</li>
+              <li>Operational risks</li>
+              <li>Technology risks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="acc-item">
+        <button class="acc-head"><span class="acc-num">6</span><span class="acc-title">Value Creation Plan</span><span class="acc-arrow">▾</span></button>
+        <div class="acc-body">
+          <div class="acc-body-inner">
+            <ul class="check-list">
+              <li>Synergies</li>
+              <li>Cost savings</li>
+              <li>Growth initiatives</li>
+              <li>100-day action plan</li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
-    <p class="process-note">Typical timeline: 60–90 days from first conversation to close.</p>
+
+    <div class="outcome-banner outcome-orange reveal">Outcome: Confidence before you buy, clarity before you sell.</div>
   </section>
 
-  <!-- ── WHY ── -->
-  <div id="why">
-    <section class="section centered">
-      <p class="section-eyebrow warm">Why SnowBirdian</p>
-      <h2 class="section-title">Selling to us is different</h2>
-      <div class="why-grid" style="margin-top: 2.5rem;">
-        <div class="why-card reveal">
-          <div class="why-icon">🤝</div>
-          <h3>Direct &amp; confidential</h3>
-          <p>You deal directly with the buyer — no brokers required, no word getting out before you're ready.</p>
+  <!-- ── POSITION ── -->
+  <section id="position">
+    <div class="section">
+      <p class="position-statement reveal"><span style="color:var(--blue);">Improve Performance.</span> <span style="color:var(--orange);">Unlock Value.</span></p>
+      <div class="position-cols">
+        <div class="position-col reveal">
+          <h3>Build Better</h3>
+          <p>Helping businesses operate, scale, and grow through business &amp; technology consulting.</p>
         </div>
-        <div class="why-card reveal">
-          <div class="why-icon">⚖️</div>
-          <h3>Fair, transparent offers</h3>
-          <p>Valuations grounded in real financials, explained clearly. No re-trading games at the finish line.</p>
+        <div class="position-col reveal">
+          <h3>Buy Smarter</h3>
+          <p>Helping investors and owners evaluate, acquire, and prepare businesses for transition.</p>
         </div>
-        <div class="why-card reveal">
-          <div class="why-icon">🌱</div>
-          <h3>Your legacy continues</h3>
-          <p>The name, the team, and the relationships you built stay intact — and get the investment they deserve.</p>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- ── FOUNDER ── -->
-  <section id="founder" class="section">
-    <p class="section-eyebrow">The Founder</p>
-    <h2 class="section-title">Who you'll be working with</h2>
-    <div class="founder-wrap" style="margin-top: 2.5rem;">
-      <div class="founder-photo reveal">Photo coming soon</div>
-      <div class="founder-bio reveal">
-        <h3 class="founder-name serif">Dillon Ketcham</h3>
-        <p class="founder-role">Founder, SnowBirdian</p>
-        <p>Dillon is an entrepreneur and former <strong>financial advisor</strong> based in Scottsdale, Arizona. At Renaissance Financial he managed nearly <strong>$10 million in client assets</strong> with a 92% retention rate — experience that shaped how he evaluates businesses: cash flow first, relationships always.</p>
-        <p>Before that, he founded <strong>KAP 3D Virtual Tours and Drones</strong>, building a custom CRM, an SEO-driven web presence, and recurring revenue streams from the ground up. He knows what it takes to start, run, and grow a small business — and what owners sacrifice to do it.</p>
-        <p>SnowBirdian combines that operating experience with financial discipline to give owners a trustworthy exit and their businesses a permanent home.</p>
       </div>
     </div>
   </section>
 
   <!-- ── CONTACT ── -->
-  <section id="contact">
-    <div class="section">
-      <p class="section-eyebrow">Start a Conversation</p>
-      <h2 class="serif">Thinking about selling — now or someday?</h2>
-      <p class="section-lead">Even if you're a year or two out, the best exits start with an early, confidential conversation. No pressure, no obligation.</p>
-      <a class="contact-email" href="mailto:dketcham10@gmail.com">dketcham10@gmail.com</a>
-      <p class="contact-confidential">All inquiries are strictly confidential.</p>
-    </div>
+  <section id="contact" class="section centered">
+    <p class="section-eyebrow">Start a Conversation</p>
+    <h2 class="section-title">Let's talk about your business</h2>
+    <p class="section-lead">Whether you're improving, buying, or preparing to sell — the first conversation is free, confidential, and pressure-free.</p>
+    <a class="contact-email" href="mailto:dketcham10@gmail.com">dketcham10@gmail.com</a>
+    <p class="contact-confidential">All inquiries are strictly confidential.</p>
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
-    <img src="assets/logo.png" alt="SnowBirdian logo" />
-    <p>© 2026 SnowBirdian · Scottsdale, AZ</p>
+    <img src="assets/logo-light.png" alt="SnowBirdian logo" />
+    <p>© 2026 SnowBirdian · Scottsdale, AZ · Build Better. Buy Smarter.</p>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
+    // Scroll progress bar
+    const progress = document.getElementById('progress');
+    window.addEventListener('scroll', () => {
+      const h = document.documentElement;
+      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+      progress.style.width = pct + '%';
+    }, { passive: true });
+
+    // Reveal animations
+    const revealObs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
           e.target.classList.add('visible');
-          observer.unobserve(e.target);
+          revealObs.unobserve(e.target);
         }
       });
     }, { threshold: 0.12 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Pillar tabs (scoped per pillar)
+    document.querySelectorAll('[data-tabs]').forEach(row => {
+      row.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const pillar = row.closest('.pillar');
+          row.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+          pillar.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          pillar.querySelector('#' + btn.dataset.tab).classList.add('active');
+        });
+      });
+    });
+
+    // Consulting stepper
+    const steps = [
+      { t: 'Discover', d: 'Understand goals, challenges, operations, and financial drivers.' },
+      { t: 'Diagnose', d: 'Identify bottlenecks, inefficiencies, risks, and missed opportunities.' },
+      { t: 'Design', d: 'Develop practical recommendations and a prioritized roadmap.' },
+      { t: 'Deploy', d: 'Support implementation, technology adoption, and change management.' },
+      { t: 'Drive Results', d: 'Measure outcomes, refine strategies, and create accountability.' }
+    ];
+    const sdTitle = document.getElementById('sd-title');
+    const sdText = document.getElementById('sd-text');
+    document.querySelectorAll('.step-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.step-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const s = steps[+btn.dataset.step];
+        sdTitle.textContent = s.t;
+        sdText.textContent = s.d;
+        const detail = document.getElementById('step-detail');
+        detail.style.animation = 'none';
+        void detail.offsetWidth;
+        detail.style.animation = '';
+      });
+    });
+
+    // Accordion
+    document.querySelectorAll('.acc-item').forEach(item => {
+      const head = item.querySelector('.acc-head');
+      const body = item.querySelector('.acc-body');
+      if (item.classList.contains('open')) body.style.maxHeight = body.scrollHeight + 'px';
+      head.addEventListener('click', () => {
+        const isOpen = item.classList.contains('open');
+        if (isOpen) {
+          item.classList.remove('open');
+          body.style.maxHeight = '0px';
+        } else {
+          item.classList.add('open');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Active nav link on scroll
+    const navMap = [
+      { id: 'pillars', link: document.querySelector('a[href="#pillars"]') },
+      { id: 'consulting', link: document.querySelector('a[href="#consulting"]') },
+      { id: 'diligence', link: document.querySelector('a[href="#diligence"]') }
+    ];
+    const navObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const m = navMap.find(n => n.id === e.target.id);
+        if (m && e.isIntersecting) {
+          navMap.forEach(n => n.link.classList.remove('active'));
+          m.link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px' });
+    navMap.forEach(n => navObs.observe(document.getElementById(n.id)));
   </script>
 
 </body>
