@@ -3,24 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SnowBirdian — Build Better. Buy Smarter.</title>
-  <meta name="description" content="SnowBirdian helps businesses improve performance and unlock value — business & technology advisory plus acquisition & due diligence services." />
-  <link rel="icon" type="image/png" href="assets/logo-light.png" />
+  <title>Snowbirdian Holdings — Build Better. Buy Smarter.</title>
+  <meta name="description" content="Snowbirdian Holdings helps businesses improve performance and unlock value — business & technology advisory plus acquisition & due diligence services." />
+  <link rel="icon" type="image/png" href="assets/logo-light-transparent.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --blue: #2563eb;
-      --blue-bright: #4db5ff;
-      --blue-soft: rgba(37, 99, 235, 0.08);
+      --blue: #3b82f6;
+      --blue-bright: #60a5fa;
+      --blue-soft: rgba(59, 130, 246, 0.12);
       --orange: #f97f2e;
       --orange-deep: #e0533d;
-      --orange-soft: rgba(249, 127, 46, 0.09);
-      --text: #15202e;
-      --text-muted: #5d6e7f;
-      --bg: #ffffff;
-      --surface: #f5f8fb;
-      --border: #e3eaf1;
+      --orange-soft: rgba(249, 127, 46, 0.12);
+      --dark: #0c1220;
+      --dark-elevated: #141c2e;
+      --dark-border: rgba(255, 255, 255, 0.08);
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --text-on-dark: #f1f5f9;
+      --text-muted-on-dark: #94a3b8;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --border: #e2e8f0;
       --gradient: linear-gradient(90deg, var(--blue) 0%, var(--orange) 100%);
     }
 
@@ -29,11 +37,13 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    h1, h2, h3, .serif { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; }
+    h1, h2, h3, .serif { font-family: 'Fraunces', Georgia, 'Times New Roman', serif; font-weight: 500; letter-spacing: -0.01em; }
 
     .grad-text {
       background: var(--gradient);
@@ -61,9 +71,9 @@
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(255, 255, 255, 0.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
+      background: rgba(12, 18, 32, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--dark-border);
     }
 
     .nav-inner {
@@ -86,32 +96,36 @@
       text-decoration: none;
     }
 
-    .nav-logo img { height: 2.3rem; width: auto; mix-blend-mode: multiply; }
-    .nav-logo .word-snow { color: var(--blue); }
+    .nav-logo { font-family: 'Fraunces', Georgia, serif; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; }
+    .nav-logo span { white-space: nowrap; }
+    .nav-logo img { height: 2.2rem; width: auto; }
+    .nav-logo .word-snow { color: var(--blue-bright); }
     .nav-logo .word-birdian { color: var(--orange); }
+    .nav-logo .word-holdings { color: var(--text-on-dark); font-weight: 500; }
 
-    .nav-links { display: flex; gap: 1.6rem; align-items: center; }
+    .nav-links { display: flex; gap: 1.4rem; align-items: center; }
 
     .nav-links a {
-      font-size: 0.78rem;
-      letter-spacing: 0.1em;
+      font-size: 0.76rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--text-muted);
+      color: var(--text-muted-on-dark);
       text-decoration: none;
       transition: color 0.2s;
       padding-bottom: 2px;
       border-bottom: 2px solid transparent;
+      white-space: nowrap;
     }
 
-    .nav-links a:hover { color: var(--blue); }
-    .nav-links a.active { color: var(--blue); border-color: var(--blue); }
+    .nav-links a:hover { color: var(--text-on-dark); }
+    .nav-links a.active { color: var(--blue-bright); border-color: var(--blue-bright); }
 
     .nav-cta {
       background: var(--gradient);
       color: #fff !important;
       font-weight: 600;
-      padding: 0.55rem 1.2rem;
-      border-radius: 6px;
+      padding: 0.55rem 1.25rem;
+      border-radius: 999px;
       border-bottom: none !important;
       transition: opacity 0.2s, transform 0.2s;
     }
@@ -133,6 +147,8 @@
       padding: 7rem 2rem 4rem;
       position: relative;
       overflow: hidden;
+      background: linear-gradient(165deg, var(--dark) 0%, #111827 45%, #0f172a 100%);
+      color: var(--text-on-dark);
     }
 
     #hero::before {
@@ -140,17 +156,21 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(ellipse 45% 40% at 22% 25%, rgba(77, 181, 255, 0.13) 0%, transparent 70%),
-        radial-gradient(ellipse 45% 40% at 78% 30%, rgba(249, 127, 46, 0.11) 0%, transparent 70%);
+        radial-gradient(ellipse 55% 45% at 50% 38%, #000000 0%, transparent 72%),
+        radial-gradient(ellipse 50% 45% at 18% 30%, rgba(59, 130, 246, 0.18) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 40% at 82% 25%, rgba(249, 127, 46, 0.14) 0%, transparent 65%),
+        linear-gradient(165deg, var(--dark) 0%, #111827 45%, #0f172a 100%);
       pointer-events: none;
     }
+
+    #hero > * { position: relative; z-index: 1; }
 
     .hero-logo {
       width: clamp(220px, 32vw, 360px);
       height: auto;
       margin-bottom: 1.2rem;
       animation: float 5s ease-in-out infinite;
-      mix-blend-mode: multiply;
+      filter: drop-shadow(0 12px 40px rgba(59, 130, 246, 0.3));
     }
 
     @keyframes float {
@@ -158,58 +178,65 @@
       50% { transform: translateY(-9px); }
     }
 
-    .hero-eyebrow {
-      font-size: 0.74rem;
-      letter-spacing: 0.26em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 1.4rem;
-      font-weight: 600;
+    .hero-badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--text-muted-on-dark);
+      margin-bottom: 1.6rem;
+      font-weight: 500;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--dark-border);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(8px);
     }
 
     .hero-headline {
-      font-size: clamp(2.6rem, 7vw, 4.6rem);
-      line-height: 1.1;
-      margin-bottom: 1.4rem;
+      font-size: clamp(2.8rem, 7.5vw, 5rem);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      color: var(--text-on-dark);
     }
 
-    .hero-headline .hl-build { color: var(--blue); }
+    .hero-headline .hl-build { color: var(--blue-bright); }
     .hero-headline .hl-buy { color: var(--orange); }
 
     .hero-sub {
-      font-size: clamp(0.95rem, 2vw, 1.12rem);
-      color: var(--text-muted);
-      max-width: 40rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--text-muted-on-dark);
+      max-width: 38rem;
       margin-bottom: 2.6rem;
-      font-weight: 300;
+      font-weight: 400;
+      line-height: 1.6;
     }
 
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
 
     .btn {
       display: inline-block;
-      font-size: 0.8rem;
-      letter-spacing: 0.09em;
-      text-transform: uppercase;
+      font-size: 0.88rem;
+      letter-spacing: 0.01em;
       text-decoration: none;
       padding: 0.95rem 1.9rem;
-      border-radius: 6px;
+      border-radius: 999px;
       font-weight: 600;
       transition: all 0.2s;
     }
 
-    .btn-blue { background: var(--blue); color: #fff; }
-    .btn-blue:hover { background: #1d4fc4; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.25); }
+    .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 4px 14px rgba(37,99,235,0.18); }
+    .btn-blue:hover { background: #1d4fc4; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(37,99,235,0.28); }
 
-    .btn-orange { background: var(--orange); color: #fff; }
-    .btn-orange:hover { background: #e06a1b; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(249,127,46,0.25); }
+    .btn-orange { background: var(--orange); color: #fff; box-shadow: 0 4px 14px rgba(249,127,46,0.18); }
+    .btn-orange:hover { background: #e06a1b; transform: translateY(-2px); box-shadow: 0 10px 24px rgba(249,127,46,0.28); }
 
     .scroll-cue {
       position: absolute;
       bottom: 2.2rem;
       left: 50%;
       transform: translateX(-50%);
-      color: var(--text-muted);
+      color: var(--text-muted-on-dark);
       font-size: 0.68rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
@@ -247,15 +274,72 @@
     }
 
     .section-lead {
-      font-size: 0.96rem;
+      font-size: 1.02rem;
       color: var(--text-muted);
       max-width: 40rem;
       margin-bottom: 2.8rem;
-      font-weight: 300;
+      font-weight: 400;
+      line-height: 1.6;
     }
 
     .centered { text-align: center; }
     .centered .section-title, .centered .section-lead { margin-left: auto; margin-right: auto; }
+
+    /* ── DARK SECTIONS ── */
+    .section-dark {
+      background: var(--dark);
+      color: var(--text-on-dark);
+      border-top: 1px solid var(--dark-border);
+      border-bottom: 1px solid var(--dark-border);
+    }
+
+    .section-dark .section-eyebrow { color: var(--blue-bright); }
+    .section-dark .section-eyebrow.warm { color: var(--orange); }
+    .section-dark .section-title { color: var(--text-on-dark); }
+    .section-dark .section-lead { color: var(--text-muted-on-dark); }
+    .section-dark .contact-confidential { color: var(--text-muted-on-dark); }
+
+    .section-dark .step-btn {
+      background: var(--dark-elevated);
+      border-color: var(--dark-border);
+    }
+
+    .section-dark .step-btn .step-name { color: var(--text-on-dark); }
+    .section-dark .step-btn .step-num { color: var(--blue-bright); }
+    .section-dark .step-btn.active { background: rgba(59, 130, 246, 0.15); border-color: var(--blue); }
+    .section-dark .step-btn:hover:not(.active) { border-color: rgba(255,255,255,0.15); }
+
+    .section-dark .step-detail {
+      background: var(--dark-elevated);
+      border-color: var(--dark-border);
+    }
+
+    .section-dark .step-detail h3 { color: var(--text-on-dark); }
+    .section-dark .step-detail p { color: var(--text-muted-on-dark); }
+
+    .section-dark .outcome-banner.outcome-blue {
+      background: rgba(59, 130, 246, 0.12);
+      border-color: rgba(59, 130, 246, 0.25);
+      color: var(--blue-bright);
+    }
+
+    .section-dark .position-col {
+      background: var(--dark-elevated);
+      border-color: var(--dark-border);
+    }
+
+    .section-dark .position-col p { color: var(--text-muted-on-dark); }
+    .section-dark .position-col:first-child h3 { color: var(--blue-bright); }
+    .section-dark .position-statement span:first-child { color: var(--blue-bright) !important; }
+    .section-dark .position-statement span:last-child { color: var(--orange) !important; }
+
+    #pillars { background: var(--bg); }
+
+    .section-dark .hubspot-form-wrap {
+      background: var(--dark-elevated);
+      border: 1px solid var(--dark-border);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+    }
 
     /* ── PILLARS ── */
     .pillars-grid {
@@ -268,10 +352,11 @@
       border: 1px solid var(--border);
       border-radius: 14px;
       padding: 2.1rem 2rem;
-      background: var(--bg);
+      background: var(--surface);
       transition: transform 0.25s, box-shadow 0.25s;
       position: relative;
       overflow: hidden;
+      box-shadow: 0 4px 24px rgba(15, 23, 42, 0.06);
     }
 
     .pillar:hover { transform: translateY(-4px); }
@@ -392,8 +477,6 @@
     @media (max-width: 820px) { .pillars-grid { grid-template-columns: 1fr; } }
 
     /* ── PROCESS STEPPER ── */
-    #consulting { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-
     .stepper {
       display: flex;
       gap: 0.6rem;
@@ -529,13 +612,6 @@
     @media (max-width: 560px) { .acc-body-inner { padding-left: 1.4rem; } }
 
     /* ── POSITION BANNER ── */
-    #position {
-      background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, rgba(249, 127, 46, 0.05) 100%);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      text-align: center;
-    }
-
     .position-statement {
       font-size: clamp(1.9rem, 5vw, 3.1rem);
       font-family: Georgia, serif;
@@ -574,102 +650,36 @@
     /* ── CONTACT ── */
     #contact { text-align: center; }
 
-    .contact-form {
-      max-width: 580px;
+    .hubspot-form-wrap {
+      max-width: 600px;
       margin: 0 auto;
-      background: var(--bg);
-      border: 1px solid var(--border);
       border-radius: 14px;
-      padding: 2.2rem 2rem;
-      box-shadow: 0 18px 50px rgba(21, 32, 46, 0.07);
+      padding: 1.5rem 1.25rem;
       text-align: left;
     }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
+    .hubspot-form-wrap .hs-form-frame { min-height: 420px; }
+
+    /* HubSpot form labels — white on dark contact section */
+    #contact .hubspot-form-wrap label,
+    #contact .hubspot-form-wrap legend,
+    #contact .hubspot-form-wrap .hs-form-field > label,
+    #contact .hubspot-form-wrap .hs-field-desc,
+    #contact .hubspot-form-wrap .hs-form-field label span,
+    #contact .hubspot-form-wrap .hs-form-title,
+    #contact .hubspot-form-wrap h3,
+    #contact .hubspot-form-wrap p {
+      color: var(--text-on-dark) !important;
     }
 
-    @media (max-width: 540px) { .form-row { grid-template-columns: 1fr; } }
-
-    .form-field { margin-bottom: 1.1rem; }
-
-    .form-field label {
-      display: block;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: var(--text-muted);
-      margin-bottom: 0.4rem;
+    #contact .hubspot-form-wrap .hs-form-checkbox-display,
+    #contact .hubspot-form-wrap .hs-form-booleancheckbox-display {
+      color: var(--text-on-dark) !important;
     }
 
-    .form-field input,
-    .form-field select,
-    .form-field textarea {
-      width: 100%;
-      font-family: inherit;
-      font-size: 0.92rem;
-      color: var(--text);
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 0.75rem 0.9rem;
-      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
-      appearance: none;
+    #contact .hubspot-form-wrap .hs-form-required {
+      color: var(--orange) !important;
     }
-
-    .form-field textarea { resize: vertical; min-height: 120px; }
-
-    .form-field input:focus,
-    .form-field select:focus,
-    .form-field textarea:focus {
-      outline: none;
-      border-color: var(--blue);
-      background: var(--bg);
-      box-shadow: 0 0 0 3px var(--blue-soft);
-    }
-
-    .form-field select {
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235d6e7f' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 0.85rem center;
-      background-size: 0.85rem;
-      padding-right: 2.4rem;
-    }
-
-    .form-submit {
-      width: 100%;
-      font-family: inherit;
-      font-size: 0.82rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      font-weight: 700;
-      color: #fff;
-      background: var(--gradient);
-      border: none;
-      border-radius: 8px;
-      padding: 1rem;
-      cursor: pointer;
-      transition: opacity 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-
-    .form-submit:hover { opacity: 0.92; transform: translateY(-2px); box-shadow: 0 10px 26px rgba(37, 99, 235, 0.22); }
-
-    .form-success {
-      display: none;
-      max-width: 580px;
-      margin: 0 auto 1.4rem;
-      padding: 1.1rem 1.5rem;
-      border-radius: 10px;
-      background: rgba(34, 160, 90, 0.09);
-      border: 1px solid rgba(34, 160, 90, 0.3);
-      color: #1d7a47;
-      font-size: 0.92rem;
-    }
-
-    .form-success.show { display: block; animation: fadeIn 0.4s ease; }
 
     .contact-confidential {
       margin-top: 2.2rem;
@@ -680,17 +690,18 @@
 
     /* ── FOOTER ── */
     footer {
-      border-top: 1px solid var(--border);
-      padding: 2rem;
+      background: var(--dark);
+      border-top: 1px solid var(--dark-border);
+      padding: 2.5rem 2rem;
       text-align: center;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
-    footer img { height: 2rem; width: auto; mix-blend-mode: multiply; }
-    footer p { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted); }
+    footer img { height: 2rem; width: auto; }
+    footer p { font-size: 0.72rem; letter-spacing: 0.08em; color: var(--text-muted-on-dark); }
 
     /* ── REVEAL ── */
     .reveal {
@@ -710,8 +721,8 @@
   <nav class="nav">
     <div class="nav-inner">
       <a href="#hero" class="nav-logo">
-        <img src="assets/logo-light.png" alt="SnowBirdian logo" />
-        <span><span class="word-snow">Snow</span><span class="word-birdian">Birdian</span></span>
+        <img src="assets/logo-transparent.png" alt="Snowbirdian Holdings logo" />
+        <span><span class="word-snow">Snow</span><span class="word-birdian">birdian</span> <span class="word-holdings">Holdings</span></span>
       </a>
       <div class="nav-links">
         <a href="#pillars" data-nav>What We Do</a>
@@ -724,10 +735,10 @@
 
   <!-- ── HERO ── -->
   <section id="hero">
-    <img class="hero-logo" src="assets/logo-light.png" alt="SnowBirdian phoenix logo" />
-    <p class="hero-eyebrow">One Company. Two Ways We Create Value.</p>
+    <img class="hero-logo" src="assets/logo-transparent.png" alt="Snowbirdian Holdings phoenix logo" />
+    <span class="hero-badge">One company. Two ways we create value.</span>
     <h1 class="hero-headline"><span class="hl-build">Build Better.</span> <span class="hl-buy">Buy Smarter.</span></h1>
-    <p class="hero-sub">SnowBirdian helps businesses improve performance and unlock value — practical business &amp; technology consulting on one side, rigorous acquisition &amp; due diligence services on the other.</p>
+    <p class="hero-sub">Snowbirdian Holdings helps businesses improve performance and unlock value — through hands-on consulting and disciplined acquisition &amp; due diligence.</p>
     <div class="hero-actions">
       <a href="#pillars" class="btn btn-blue">Improve the Business</a>
       <a href="#diligence" class="btn btn-orange">Unlock Business Value</a>
@@ -817,7 +828,7 @@
   </section>
 
   <!-- ── CONSULTING PROCESS ── -->
-  <section id="consulting">
+  <section id="consulting" class="section-dark">
     <div class="section centered">
       <p class="section-eyebrow">Our Consulting Process</p>
       <h2 class="section-title">Business Performance Assessment Framework</h2>
@@ -935,8 +946,8 @@
   </section>
 
   <!-- ── POSITION ── -->
-  <section id="position">
-    <div class="section">
+  <section id="position" class="section-dark">
+    <div class="section centered">
       <p class="position-statement reveal"><span style="color:var(--blue);">Improve Performance.</span> <span style="color:var(--orange);">Unlock Value.</span></p>
       <div class="position-cols">
         <div class="position-col reveal">
@@ -952,73 +963,39 @@
   </section>
 
   <!-- ── CONTACT ── -->
-  <section id="contact" class="section centered">
+  <section id="contact" class="section centered section-dark">
     <p class="section-eyebrow">Start a Conversation</p>
     <h2 class="section-title">Let's talk about your business</h2>
     <p class="section-lead">Whether you're improving, buying, or preparing to sell — the first conversation is free, confidential, and pressure-free.</p>
 
-    <div class="form-success" id="form-success">
-      Thank you — your message has been sent. We'll be in touch shortly.
-    </div>
-
-    <form class="contact-form" action="https://formsubmit.co/dillon@snowbirdian.com" method="POST">
-      <input type="hidden" name="_subject" value="New inquiry from SnowBirdian.com" />
-      <input type="hidden" name="_captcha" value="false" />
-      <input type="hidden" name="_template" value="table" />
-      <input type="hidden" name="_next" value="http://www.snowbirdian.com/?sent=1#contact" />
-      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
-
-      <div class="form-row">
-        <div class="form-field">
-          <label for="f-name">Name</label>
-          <input type="text" id="f-name" name="name" required placeholder="Your name" />
-        </div>
-        <div class="form-field">
-          <label for="f-email">Email</label>
-          <input type="email" id="f-email" name="email" required placeholder="you@company.com" />
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-field">
-          <label for="f-company">Company <span style="text-transform:none;font-weight:400;">(optional)</span></label>
-          <input type="text" id="f-company" name="company" placeholder="Company name" />
-        </div>
-        <div class="form-field">
-          <label for="f-interest">I'm interested in</label>
-          <select id="f-interest" name="interest" required>
-            <option value="" disabled selected>Select one…</option>
-            <option>I need help on my business</option>
-            <option>I want to sell my business</option>
-            <option>Other</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-field">
-        <label for="f-message">Message</label>
-        <textarea id="f-message" name="message" required placeholder="Tell us a little about your business and what you're looking for…"></textarea>
-      </div>
-
-      <button type="submit" class="form-submit">Send Message</button>
-    </form>
+    <div class="hubspot-form-wrap" id="hubspot-form"></div>
 
     <p class="contact-confidential">All inquiries are strictly confidential.</p>
   </section>
 
   <!-- ── FOOTER ── -->
   <footer>
-    <img src="assets/logo-light.png" alt="SnowBirdian logo" />
-    <p>© 2025 SnowBirdian · Scottsdale, AZ · Build Better. Buy Smarter.</p>
+    <img src="assets/logo-transparent.png" alt="Snowbirdian Holdings logo" />
+    <p>© 2025 Snowbirdian Holdings · Scottsdale, AZ · Build Better. Buy Smarter.</p>
   </footer>
 
+  <script charset="utf-8" type="text/javascript" src="https://js-na2.hsforms.net/forms/embed/v2.js"></script>
   <script>
-    // Show thank-you banner after form redirect
-    if (new URLSearchParams(location.search).has('sent')) {
-      document.getElementById('form-success').classList.add('show');
-      history.replaceState(null, '', location.pathname + '#contact');
-    }
-
+    (function initHubSpotForm() {
+      if (window.hbspt && hbspt.forms) {
+        hbspt.forms.create({
+          region: "na2",
+          portalId: "244446007",
+          formId: "14cf639b-d609-41c6-a7fb-c05d195a87b4",
+          target: "#hubspot-form",
+          css: ".hs-form label, .hs-form .hs-form-field > label, .hs-form legend, .hs-form .hs-field-desc, .hs-form .hs-form-field label span, .hs-form .hs-form-checkbox-display, .hs-form .hs-form-booleancheckbox-display, .hs-form h3, .hs-form .hs-form-title, .hs-form p { color: #f1f5f9 !important; } .hs-form .hs-form-required { color: #f97f2e !important; }"
+        });
+      } else {
+        setTimeout(initHubSpotForm, 100);
+      }
+    })();
+  </script>
+  <script>
     // Scroll progress bar
     const progress = document.getElementById('progress');
     window.addEventListener('scroll', () => {
