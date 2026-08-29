@@ -5,9 +5,9 @@ const SCRIPT_ID = `hs-forms-embed-${hubspot.portalId}`
 
 /**
  * HubSpot's per-portal embed script scans the DOM for `.hs-form-frame`
- * elements and mounts each form into an iframe. Because the form renders
- * cross-origin, its fields can only be styled from the HubSpot form editor —
- * page CSS reaches the surrounding card, nothing inside it.
+ * elements and mounts each form into an iframe. Field styling comes from the
+ * `--hsf-*` custom properties in index.css, which the embed script reads off
+ * the host page.
  */
 export function HubSpotForm() {
   useEffect(() => {
@@ -21,7 +21,7 @@ export function HubSpotForm() {
   }, [])
 
   return (
-    <div className="hubspot-form-wrap bg-cream px-5 py-6 md:px-8 md:py-8">
+    <div className="hubspot-form-wrap">
       <div
         className="hs-form-frame min-h-[28rem]"
         data-region={hubspot.region}
