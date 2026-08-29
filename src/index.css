@@ -167,11 +167,88 @@ h3,
 }
 
 /*
-  HubSpot serves this form inside an iframe, so page CSS cannot restyle its
-  fields — that has to be done in the HubSpot form editor. We only control the
-  card around it.
+  HubSpot renders the embed in an iframe, so its internals are unreachable by
+  normal selectors. These `--hsf-*` custom properties are the supported bridge:
+  the embed script reads them off the host page and applies them inside the
+  form. Values mirror .input-field-dark and .btn-cream so the form matches the
+  rest of the contact panel.
 */
+:root {
+  --hsf-global__font-family: 'Source Sans 3 Variable', 'Source Sans 3',
+    'Source Sans Fallback', 'Helvetica Neue', Arial, sans-serif;
+  --hsf-global__font-size: 1.0625rem;
+  --hsf-global__color: #f6f1e8;
+  --hsf-global-error__color: #c4a882;
+
+  --hsf-background__background-color: transparent;
+  --hsf-background__border-width: 0;
+  --hsf-background__padding: 0;
+
+  --hsf-row__vertical-spacing: 1.25rem;
+  --hsf-module__vertical-spacing: 1.25rem;
+
+  --hsf-field-label__color: #f6f1e8;
+  --hsf-field-label__font-size: 0.875rem;
+  --hsf-field-label-requiredindicator__color: #c4a882;
+  --hsf-field-description__color: rgba(246, 241, 232, 0.6);
+  --hsf-field-footer__color: rgba(246, 241, 232, 0.6);
+
+  --hsf-field-input__color: #f6f1e8;
+  --hsf-field-input__background-color: #14110e;
+  --hsf-field-input__placeholder-color: rgba(246, 241, 232, 0.4);
+  --hsf-field-input__border-color: rgba(246, 241, 232, 0.15);
+  --hsf-field-input__border-width: 1px;
+  --hsf-field-input__border-style: solid;
+  --hsf-field-input__border-radius: 0;
+  --hsf-field-input__padding: 0.75rem 1rem;
+
+  --hsf-field-textarea__color: #f6f1e8;
+  --hsf-field-textarea__background-color: #14110e;
+  --hsf-field-textarea__placeholder-color: rgba(246, 241, 232, 0.4);
+  --hsf-field-textarea__border-color: rgba(246, 241, 232, 0.15);
+  --hsf-field-textarea__border-width: 1px;
+  --hsf-field-textarea__border-style: solid;
+  --hsf-field-textarea__border-radius: 0;
+  --hsf-field-textarea__padding: 0.75rem 1rem;
+
+  --hsf-field-checkbox__background-color: #14110e;
+  --hsf-field-checkbox__color: #f6f1e8;
+  --hsf-field-checkbox__border-color: rgba(246, 241, 232, 0.3);
+  --hsf-field-checkbox__border-width: 1px;
+  --hsf-field-checkbox__border-style: solid;
+
+  --hsf-richtext__color: rgba(246, 241, 232, 0.72);
+  --hsf-richtext__font-size: 0.875rem;
+
+  --hsf-heading__color: #f6f1e8;
+
+  --hsf-button__background-color: #f6f1e8;
+  --hsf-button__color: #14110e;
+  --hsf-button__border-radius: 0;
+  --hsf-button__padding: 0.875rem 1.75rem;
+  --hsf-button__font-size: 0.875rem;
+  --hsf-button__box-shadow: none;
+}
+
 .hubspot-form-wrap iframe {
   width: 100% !important;
   border: 0 !important;
+}
+
+/*
+  HubSpot insets the form's contents ~40px inside the iframe and adds ~133px of
+  empty space above the first field, and no --hsf-* variable controls either.
+  Rather than fight it, the wrapper becomes a card whose edges align to the page
+  grid, so that inset reads as deliberate padding. The crop trims the top gap
+  down to match the side inset. Retune both if HubSpot's form padding changes.
+*/
+.hubspot-form-wrap {
+  --hs-form-dead-space: 211px;
+  overflow: hidden;
+  border: 1px solid rgba(246, 241, 232, 0.1);
+  background: rgba(246, 241, 232, 0.03);
+}
+
+.hubspot-form-wrap .hs-form-frame {
+  margin-top: calc(var(--hs-form-dead-space) * -1);
 }
