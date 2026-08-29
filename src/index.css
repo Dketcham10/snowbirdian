@@ -1,0 +1,269 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Latin-only variable fonts — browsers skip unused unicode-range files. */
+@font-face {
+  font-family: 'Cormorant Garamond Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 300 700;
+  src: url('@fontsource-variable/cormorant-garamond/files/cormorant-garamond-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: 'Source Sans 3 Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 200 900;
+  src: url('@fontsource-variable/source-sans-3/files/source-sans-3-latin-wght-normal.woff2')
+    format('woff2-variations');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+  Sized fallbacks + font-display: swap (via @fontsource) to keep CLS under 0.1.
+  Metric overrides keep Georgia / Arial from jumping when webfonts arrive.
+*/
+@font-face {
+  font-family: 'Cormorant Fallback';
+  src: local('Georgia');
+  size-adjust: 108%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Source Sans Fallback';
+  src: local('Arial');
+  size-adjust: 97%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+:root {
+  color-scheme: light;
+  --ink: #14110e;
+  --cream: #f6f1e8;
+  --bronze: #8a6f4e;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.75rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  @apply bg-cream text-ink-soft font-sans text-body antialiased;
+  font-family:
+    'Source Sans 3 Variable',
+    'Source Sans 3',
+    'Source Sans Fallback',
+    'Helvetica Neue',
+    Arial,
+    sans-serif;
+}
+
+h1,
+h2,
+h3,
+.font-display {
+  font-family:
+    'Cormorant Garamond Variable',
+    'Cormorant Garamond',
+    'Cormorant Fallback',
+    Georgia,
+    'Times New Roman',
+    serif;
+}
+
+::selection {
+  background: #ddd4c4;
+  color: #14110e;
+}
+
+:focus-visible {
+  outline: 2px solid #6b5340;
+  outline-offset: 3px;
+}
+
+.btn-primary:focus-visible,
+.btn-nav:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #f6f1e8, 0 0 0 4px #6b5340;
+}
+
+/*
+  Reveal is visible by default so crawlers and no-JS users always see copy.
+  The `js` class is added by a tiny inline script; then we hide off-screen
+  sections until IntersectionObserver marks them visible.
+*/
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal:not(.is-visible) {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  .js .reveal {
+    transition:
+      opacity 0.7s ease,
+      transform 0.7s ease;
+  }
+
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.hairline {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(138, 111, 78, 0.45),
+    transparent
+  );
+}
+
+.input-field {
+  @apply w-full min-h-11 rounded-none border border-cream-dark bg-cream px-4 py-3 text-body text-ink
+    placeholder:text-ink-muted/70 transition-colors;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #6b5340;
+  box-shadow: 0 0 0 1px #6b5340;
+}
+
+.input-field-dark {
+  @apply w-full min-h-11 rounded-none border border-white/15 bg-ink px-4 py-3 text-body text-cream
+    placeholder:text-cream/40 transition-colors;
+}
+
+.input-field-dark:focus {
+  outline: none;
+  border-color: #c4a882;
+  box-shadow: 0 0 0 1px #c4a882;
+}
+
+.skip-link {
+  @apply sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100]
+    focus:bg-cream focus:px-4 focus:py-3 focus:text-ink focus:shadow-focus;
+}
+
+/* HubSpot embed — restyle to the dark, quiet-luxury contact panel. */
+.hubspot-form-wrap .hs-form-frame,
+.hubspot-form-wrap .hs-form,
+.hubspot-form-wrap form {
+  font-family:
+    'Source Sans 3 Variable',
+    'Source Sans 3',
+    'Source Sans Fallback',
+    'Helvetica Neue',
+    Arial,
+    sans-serif !important;
+}
+
+.hubspot-form-wrap label,
+.hubspot-form-wrap legend,
+.hubspot-form-wrap .hs-form-field > label,
+.hubspot-form-wrap .hs-form-field label span,
+.hubspot-form-wrap .hs-field-desc,
+.hubspot-form-wrap .hs-form-checkbox-display,
+.hubspot-form-wrap .hs-form-booleancheckbox-display,
+.hubspot-form-wrap .hs-form-required,
+.hubspot-form-wrap p,
+.hubspot-form-wrap .hs-richtext {
+  color: #f6f1e8 !important;
+}
+
+.hubspot-form-wrap .hs-form-required {
+  color: #c4a882 !important;
+}
+
+.hubspot-form-wrap .hs-input,
+.hubspot-form-wrap input[type='text'],
+.hubspot-form-wrap input[type='email'],
+.hubspot-form-wrap input[type='tel'],
+.hubspot-form-wrap input[type='number'],
+.hubspot-form-wrap select,
+.hubspot-form-wrap textarea {
+  width: 100% !important;
+  min-height: 44px !important;
+  border-radius: 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  background: #14110e !important;
+  color: #f6f1e8 !important;
+  padding: 0.75rem 1rem !important;
+  font-size: 1.0625rem !important;
+}
+
+.hubspot-form-wrap .hs-input:focus,
+.hubspot-form-wrap input:focus,
+.hubspot-form-wrap select:focus,
+.hubspot-form-wrap textarea:focus {
+  outline: none !important;
+  border-color: #c4a882 !important;
+  box-shadow: 0 0 0 1px #c4a882 !important;
+}
+
+.hubspot-form-wrap .hs-submit,
+.hubspot-form-wrap .hs-submit .actions {
+  text-align: left !important;
+}
+
+.hubspot-form-wrap .hs-button,
+.hubspot-form-wrap input[type='submit'],
+.hubspot-form-wrap .hs-button.primary,
+.hubspot-form-wrap input.hs-button.primary {
+  width: 100% !important;
+  min-height: 44px !important;
+  margin-top: 0.75rem !important;
+  border: none !important;
+  border-radius: 0 !important;
+  background: #f6f1e8 !important;
+  background-image: none !important;
+  color: #14110e !important;
+  font-weight: 500 !important;
+  font-size: 0.875rem !important;
+  letter-spacing: 0.01em !important;
+  cursor: pointer !important;
+  box-shadow: none !important;
+}
+
+.hubspot-form-wrap .hs-button:hover,
+.hubspot-form-wrap input[type='submit']:hover,
+.hubspot-form-wrap .hs-button.primary:hover {
+  background: #ebe4d6 !important;
+  background-image: none !important;
+}
+
+.hubspot-form-wrap .hs-error-msgs label,
+.hubspot-form-wrap .hs-error-msg {
+  color: #c4a882 !important;
+}
+
+.hubspot-form-wrap ul {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.hubspot-form-wrap .hs-form-field {
+  margin-bottom: 1.25rem !important;
+}
