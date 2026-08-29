@@ -166,104 +166,12 @@ h3,
     focus:bg-cream focus:px-4 focus:py-3 focus:text-ink focus:shadow-focus;
 }
 
-/* HubSpot embed — restyle to the dark, quiet-luxury contact panel. */
-.hubspot-form-wrap .hs-form-frame,
-.hubspot-form-wrap .hs-form,
-.hubspot-form-wrap form {
-  font-family:
-    'Source Sans 3 Variable',
-    'Source Sans 3',
-    'Source Sans Fallback',
-    'Helvetica Neue',
-    Arial,
-    sans-serif !important;
-}
-
-.hubspot-form-wrap label,
-.hubspot-form-wrap legend,
-.hubspot-form-wrap .hs-form-field > label,
-.hubspot-form-wrap .hs-form-field label span,
-.hubspot-form-wrap .hs-field-desc,
-.hubspot-form-wrap .hs-form-checkbox-display,
-.hubspot-form-wrap .hs-form-booleancheckbox-display,
-.hubspot-form-wrap .hs-form-required,
-.hubspot-form-wrap p,
-.hubspot-form-wrap .hs-richtext {
-  color: #f6f1e8 !important;
-}
-
-.hubspot-form-wrap .hs-form-required {
-  color: #c4a882 !important;
-}
-
-.hubspot-form-wrap .hs-input,
-.hubspot-form-wrap input[type='text'],
-.hubspot-form-wrap input[type='email'],
-.hubspot-form-wrap input[type='tel'],
-.hubspot-form-wrap input[type='number'],
-.hubspot-form-wrap select,
-.hubspot-form-wrap textarea {
+/*
+  HubSpot serves this form inside an iframe, so page CSS cannot restyle its
+  fields — that has to be done in the HubSpot form editor. We only control the
+  card around it.
+*/
+.hubspot-form-wrap iframe {
   width: 100% !important;
-  min-height: 44px !important;
-  border-radius: 0 !important;
-  border: 1px solid rgba(255, 255, 255, 0.15) !important;
-  background: #14110e !important;
-  color: #f6f1e8 !important;
-  padding: 0.75rem 1rem !important;
-  font-size: 1.0625rem !important;
-}
-
-.hubspot-form-wrap .hs-input:focus,
-.hubspot-form-wrap input:focus,
-.hubspot-form-wrap select:focus,
-.hubspot-form-wrap textarea:focus {
-  outline: none !important;
-  border-color: #c4a882 !important;
-  box-shadow: 0 0 0 1px #c4a882 !important;
-}
-
-.hubspot-form-wrap .hs-submit,
-.hubspot-form-wrap .hs-submit .actions {
-  text-align: left !important;
-}
-
-.hubspot-form-wrap .hs-button,
-.hubspot-form-wrap input[type='submit'],
-.hubspot-form-wrap .hs-button.primary,
-.hubspot-form-wrap input.hs-button.primary {
-  width: 100% !important;
-  min-height: 44px !important;
-  margin-top: 0.75rem !important;
-  border: none !important;
-  border-radius: 0 !important;
-  background: #f6f1e8 !important;
-  background-image: none !important;
-  color: #14110e !important;
-  font-weight: 500 !important;
-  font-size: 0.875rem !important;
-  letter-spacing: 0.01em !important;
-  cursor: pointer !important;
-  box-shadow: none !important;
-}
-
-.hubspot-form-wrap .hs-button:hover,
-.hubspot-form-wrap input[type='submit']:hover,
-.hubspot-form-wrap .hs-button.primary:hover {
-  background: #ebe4d6 !important;
-  background-image: none !important;
-}
-
-.hubspot-form-wrap .hs-error-msgs label,
-.hubspot-form-wrap .hs-error-msg {
-  color: #c4a882 !important;
-}
-
-.hubspot-form-wrap ul {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-.hubspot-form-wrap .hs-form-field {
-  margin-bottom: 1.25rem !important;
+  border: 0 !important;
 }
