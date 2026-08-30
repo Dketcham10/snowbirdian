@@ -322,3 +322,17 @@ export const hubspot = {
   formId: '14cf639b-d609-41c6-a7fb-c05d195a87b4',
   region: 'na2',
 } as const
+
+export const entryPopup = {
+  eyebrow: 'New client offer',
+  headline: 'Request a Confidential Automation Assessment',
+  supporting:
+    'A free, no-obligation review of where AI automation would save your team the most time — for real estate, construction, financial, insurance, or mortgage operations.',
+  primary: 'Book My Free Assessment',
+  dismiss: 'No thanks, maybe later',
+  formLead: 'Tell us a bit about your business.',
+  thanksTitle: 'Thank you.',
+  thanksBody: 'We received your request and will be in touch personally.',
+  proof: 'Workflow audits for Phoenix real estate, construction, and lending firms',
+  closeLabel: 'Close',
+} as const

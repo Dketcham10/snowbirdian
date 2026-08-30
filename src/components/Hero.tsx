@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { cta, hero } from '../content'
-import { BlueprintGrid, PavilionElevation } from './art/ArchitecturalMotifs'
+import { BlueprintGrid, SystemSchematic } from './art/ArchitecturalMotifs'
 import { Container } from './Container'
 import { PrimaryCta } from './PrimaryCta'
 
@@ -85,7 +85,7 @@ export function Hero() {
         </div>
 
         <div className="hidden lg:col-span-5 lg:flex lg:justify-end">
-          <PavilionElevation className="h-[28rem] w-auto text-bronze-light/55 xl:h-[32rem]" />
+          <SystemSchematic className="h-[28rem] w-auto text-bronze-light/55 xl:h-[32rem]" />
         </div>
       </Container>
     </section>
