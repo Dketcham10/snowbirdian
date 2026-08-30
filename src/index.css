@@ -167,6 +167,175 @@ h3,
 }
 
 /*
+  Line art draws itself stroke by stroke, the way a plotter would. Each shape
+  carries a --i index so the delays cascade in drafting order. pathLength={1}
+  on the shapes makes one dash rule cover lines, rects, and circles alike.
+*/
+.draw-in [data-draw] {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+
+.draw-in [data-draw-fade] {
+  opacity: 0;
+}
+
+.draw-in.is-visible [data-draw] {
+  animation: draw-stroke 620ms cubic-bezier(0.65, 0, 0.35, 1) both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+.draw-in.is-visible [data-draw-fade] {
+  animation: draw-fade 460ms ease both;
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+@keyframes draw-stroke {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes draw-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/*
+  A pulse travelling the top rule of each process step, so the four stages read
+  as a pipeline with something moving through it. Deliberately unclipped — the
+  pulse crossing the gap between cards is what sells the continuity.
+*/
+.flow-rail::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 26%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #f0e6d4 45%, #c4a882 60%, transparent);
+  box-shadow: 0 0 8px rgba(240, 230, 212, 0.45);
+  opacity: 0;
+  animation: flow-pulse 5.2s linear infinite;
+  animation-delay: calc(var(--i, 0) * 640ms);
+  pointer-events: none;
+}
+
+@keyframes flow-pulse {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.85;
+  }
+  55% {
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(385%);
+    opacity: 0;
+  }
+}
+
+/* Hairline that draws across the top edge of a card on hover. */
+.trace {
+  position: relative;
+  transition: background-color 400ms ease;
+}
+
+.trace::after {
+  content: '';
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: 1px;
+  background: #8a6f4e;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
+  pointer-events: none;
+}
+
+.trace:hover,
+.trace:focus-within {
+  background-color: rgba(138, 111, 78, 0.045);
+}
+
+.trace:hover::after,
+.trace:focus-within::after {
+  transform: scaleX(1);
+}
+
+.trace-dark:hover,
+.trace-dark:focus-within {
+  background-color: rgba(196, 168, 130, 0.05);
+}
+
+.trace-dark::after {
+  background: #c4a882;
+}
+
+/*
+  Hero blueprint grid drifts against the pointer and lifts a soft brass glow
+  under it. Values come from Hero.tsx; both fall back to a neutral resting
+  state so the section looks right before any pointer movement and on touch.
+*/
+.pointer-field .field-grid {
+  /* Slight overscan so the drift never pulls the grid off an edge. */
+  transform: translate3d(
+      calc((var(--pxr, 0.5) - 0.5) * -16px),
+      calc((var(--pyr, 0.5) - 0.5) * -16px),
+      0
+    )
+    scale(1.05);
+  transition: transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pointer-field .field-glow {
+  background: radial-gradient(
+    28rem circle at var(--px, 50%) var(--py, 40%),
+    rgba(196, 168, 130, 0.13),
+    transparent 68%
+  );
+  opacity: var(--pk, 0);
+  transition: opacity 600ms ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .draw-in [data-draw] {
+    stroke-dashoffset: 0;
+  }
+
+  .draw-in [data-draw-fade] {
+    opacity: 1;
+  }
+
+  .draw-in.is-visible [data-draw],
+  .draw-in.is-visible [data-draw-fade],
+  .flow-rail::before {
+    animation: none;
+  }
+
+  .flow-rail::before {
+    display: none;
+  }
+
+  .pointer-field .field-grid {
+    transform: scale(1.05);
+  }
+
+  .pointer-field .field-glow {
+    opacity: 0;
+  }
+
+  .trace::after {
+    transition: none;
+  }
+}
+
+/*
   HubSpot renders the embed in an iframe, so its internals are unreachable by
   normal selectors. These `--hsf-*` custom properties are the supported bridge:
   the embed script reads them off the host page and applies them inside the

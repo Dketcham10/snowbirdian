@@ -22,7 +22,7 @@ export function Services() {
           {services.map((service, index) => (
             <li key={service.id} className="bg-cream">
               <Reveal delayMs={index * 60} className="h-full">
-                <article className="flex h-full flex-col px-6 py-10 md:px-10 md:py-12">
+                <article className="trace flex h-full flex-col px-6 py-10 md:px-10 md:py-12">
                   <p className="font-display text-xl text-bronze-dark">
                     {String(index + 1).padStart(2, '0')}
                   </p>
