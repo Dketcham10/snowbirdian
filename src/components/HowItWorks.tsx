@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react'
 import { processSection, processSteps } from '../content'
 import { Container } from './Container'
 import { Reveal } from './Reveal'
@@ -23,7 +24,10 @@ export function HowItWorks() {
           {processSteps.map((step, index) => (
             <li key={step.name} className="relative">
               <Reveal delayMs={index * 80} className="h-full">
-                <article className="h-full border-t border-bronze-light/35 pt-6">
+                <article
+                  className="flow-rail relative h-full border-t border-bronze-light/35 pt-6"
+                  style={{ '--i': index } as CSSProperties}
+                >
                   <p className="font-display text-3xl text-bronze-light">{step.number}</p>
                   <h3 className="font-display mt-4 text-h3 text-cream">{step.name}</h3>
                   <p className="mt-3 text-small text-cream/68">{step.text}</p>

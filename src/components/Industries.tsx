@@ -24,7 +24,7 @@ export function Industries() {
           {industries.map((industry, index) => (
             <li key={industry.name}>
               <Reveal delayMs={index * 40}>
-                <div className="grid grid-cols-1 gap-3 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-9">
+                <div className="trace grid grid-cols-1 gap-3 py-8 md:grid-cols-12 md:items-baseline md:gap-8 md:py-9">
                   <p className="font-display text-lg text-bronze-dark md:col-span-1">
                     {String(index + 1).padStart(2, '0')}
                   </p>

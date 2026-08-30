@@ -1,4 +1,5 @@
 import { Contact } from './components/Contact'
+import { EntryPopup } from './components/EntryPopup'
 import { FAQ } from './components/FAQ'
 import { Footer } from './components/Footer'
 import { Header } from './components/Header'
@@ -29,6 +30,7 @@ export default function App() {
       </main>
       <Footer />
       <StickyCta />
+      <EntryPopup />
     </>
   )
 }
