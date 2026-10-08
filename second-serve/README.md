@@ -14,7 +14,6 @@ Almost everything a visitor reads is in `index.html`. The brand name is already 
 | `[EMAIL]` | Email links (`mailto:[EMAIL]`) and the contact line | The public email |
 | `images/logo.png` | Header, footer, and browser tab | The phoenix mark. Replace the file if the logo changes. |
 | `images/scottsdale-mansion.jpg` | Hero and the closing section | A photo of a Scottsdale home. Update the `alt` text if the picture changes. |
-| `images/dillon.svg` | About section | A photo of Dillon. Update the `alt` text if the description should change. |
 
 Search the folder for `[PHONE]` and `[EMAIL]` before you publish.
 

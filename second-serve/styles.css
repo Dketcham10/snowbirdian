@@ -586,26 +586,11 @@ h3 {
   color: var(--muted);
 }
 
-.about {
-  display: grid;
-  gap: 1.5rem;
+.company-copy {
+  max-width: 40rem;
 }
 
-.about-photo {
-  margin: 0;
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  background: var(--bone);
-}
-
-.about-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-.about-copy p + p {
+.company-copy p + p {
   margin-top: 1rem;
 }
 
@@ -851,12 +836,6 @@ h3 {
 
   .steps {
     grid-template-columns: repeat(3, 1fr);
-  }
-
-  .about {
-    grid-template-columns: 0.8fr 1.2fr;
-    align-items: center;
-    gap: 3rem;
   }
 
   .fields {
