@@ -1,6 +1,6 @@
 # Snowbirdian Hospitality
 
-A single-page site for Snowbirdian Hospitality, short-term rental care for Arizona owners and investors in Scottsdale, Phoenix, Flagstaff, and Sedona. Out-of-state requests are optional. It is plain HTML, CSS, and a small script. Open `index.html` in a browser. There is no install and no build.
+A single-page site for Snowbirdian Hospitality. It is plain HTML, CSS, and a small script. Open `index.html` in a browser. There is no install and no build.
 
 This folder is separate from the SnowBirdian automation site at the root of the repository. Publish **this folder**, not the whole repo, or the other site will be replaced.
 
@@ -12,8 +12,8 @@ Almost everything a visitor reads is in `index.html`. The brand name is already 
 | --- | --- | --- |
 | `[PHONE]` | Call, Text, and footer links (`tel:[PHONE]` and `sms:[PHONE]`) | A phone number, including in the link, for example `tel:+14805551212` |
 | `[EMAIL]` | Email links (`mailto:[EMAIL]`) and the contact line | The public email |
-| `images/hero-pool.svg` | Hero background | A golden-hour pool or desert photo. Keep the descriptive `alt` if you add a foreground image. |
-| `images/cta-pool.svg` | Bottom call-to-action background | An evening pool photo |
+| `images/logo.png` | Header, footer, and browser tab | The phoenix mark. Replace the file if the logo changes. |
+| `images/scottsdale-mansion.jpg` | Hero and the closing section | A photo of a Scottsdale home. Update the `alt` text if the picture changes. |
 | `images/dillon.svg` | About section | A photo of Dillon. Update the `alt` text if the description should change. |
 
 Search the folder for `[PHONE]` and `[EMAIL]` before you publish.

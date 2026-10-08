@@ -1,14 +1,15 @@
 :root {
-  --sand: #f4ede4;
-  --bone: #fbf8f3;
-  --clay: #b5643c;
-  --clay-btn: #b15d3c;
-  --clay-ink: #fffaf6;
-  --saguaro: #3f5a47;
-  --navy: #1c2430;
-  --muted: #3e4856;
-  --line: rgba(28, 36, 48, 0.12);
-  --yellow: #d7e34a;
+  --sand: #f6f3ee;
+  --bone: #fffdfb;
+  --clay: #ff8a1f;
+  --clay-btn: #ff7a18;
+  --clay-ink: #1a120c;
+  --saguaro: #005ce5;
+  --navy: #14171d;
+  --ink: #0c0e12;
+  --muted: #3e4654;
+  --line: rgba(20, 23, 29, 0.12);
+  --yellow: #8fd4ff;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Manrope", "Segoe UI", sans-serif;
   --shadow: 0 18px 40px rgba(28, 36, 48, 0.08);
@@ -168,7 +169,7 @@ h3 {
 }
 
 .btn-clay:hover {
-  background: #9c5432;
+  background: #e06500;
 }
 
 .btn-ghost {
@@ -194,18 +195,20 @@ h3 {
   min-width: 0;
 }
 
-.ball {
-  width: 0.62rem;
-  height: 0.62rem;
-  border-radius: 50%;
-  background: var(--yellow);
-  box-shadow: inset -1px -1px 0 rgba(28, 36, 48, 0.18);
+.logo-mark {
+  width: 2.15rem;
+  height: 2.15rem;
+  object-fit: cover;
+  border-radius: 0.4rem;
+  background: #000;
+  flex: none;
 }
 
 .nav {
   position: fixed;
   inset: 0 0 auto;
   z-index: 30;
+  background: var(--ink);
   color: var(--bone);
 }
 
@@ -221,17 +224,17 @@ h3 {
 }
 
 .nav.is-solid {
-  background: var(--bone);
-  box-shadow: 0 1px 0 var(--line);
+  background: var(--ink);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 .nav.is-solid .nav-bar,
 .nav.is-open .nav-bar {
-  color: var(--navy);
+  color: var(--bone);
 }
 
 .nav.is-open .nav-bar {
-  background: var(--bone);
+  background: var(--ink);
   box-shadow: var(--shadow);
 }
 
@@ -260,8 +263,8 @@ h3 {
   flex-direction: column;
   align-items: stretch;
   padding: 0.8rem;
-  background: var(--bone);
-  color: var(--navy);
+  background: var(--ink);
+  color: var(--bone);
   border-radius: 1.2rem;
   box-shadow: var(--shadow);
 }
@@ -353,8 +356,8 @@ h3 {
 }
 
 .switch-btn.is-active {
-  background: var(--navy);
-  color: var(--bone);
+  background: var(--clay-btn);
+  color: var(--clay-ink);
 }
 
 .panel {
@@ -608,7 +611,7 @@ h3 {
   font-family: var(--serif);
   font-size: 1.5rem;
   line-height: 1;
-  color: var(--clay);
+  color: var(--saguaro);
 }
 
 .faq-item.is-open button::after {
@@ -699,7 +702,7 @@ h3 {
 }
 
 .footer {
-  background: var(--navy);
+  background: var(--ink);
   color: var(--bone);
   padding: 2.5rem 0 2rem;
 }
@@ -772,9 +775,6 @@ h3 {
     animation-delay: 0.32s;
   }
 
-  .hero-media img {
-    animation: ken 28s ease-out both;
-  }
 }
 
 @keyframes rise {
@@ -785,15 +785,6 @@ h3 {
   to {
     opacity: 1;
     transform: none;
-  }
-}
-
-@keyframes ken {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.08);
   }
 }
 
