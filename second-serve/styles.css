@@ -498,7 +498,7 @@ h3 {
     grid-template-columns: 1fr 1fr;
   }
 
-  .mosaic-lead {
+  .mosaic li.mosaic-lead {
     grid-column: 1 / -1;
     min-height: 18rem;
   }
@@ -519,20 +519,12 @@ h3 {
     order: 2;
   }
 
-  .mosaic {
-    grid-template-columns: 1.45fr 1fr;
-    grid-template-rows: 1fr 1fr;
-    min-height: 28rem;
+  .mosaic li.mosaic-lead {
+    min-height: 22rem;
   }
 
-  .mosaic-lead {
-    grid-column: 1;
-    grid-row: 1 / span 2;
-    min-height: 0;
-  }
-
-  .mosaic li {
-    min-height: 0;
+  .mosaic li:not(.mosaic-lead) {
+    min-height: 14rem;
   }
 }
 
