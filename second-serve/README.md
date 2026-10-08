@@ -25,4 +25,4 @@ Search the folder for `[PHONE]` and `[EMAIL]` before you publish.
 
 ## What the script does
 
-`script.js` solidifies the nav on scroll, opens the phone menu, swaps Full-Service and Co-Hosting, expands the “who we help” cards, and opens FAQ answers. Motion turns off when the visitor has asked the system to reduce it.
+`script.js` solidifies the nav on scroll, opens the phone menu, swaps Full-Service and Co-Hosting, and opens FAQ answers. Motion turns off when the visitor has asked the system to reduce it.

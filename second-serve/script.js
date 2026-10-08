@@ -59,15 +59,6 @@ tabs.forEach((tab) => {
 
 showService('full')
 
-document.querySelectorAll('[data-help]').forEach((button) => {
-  button.addEventListener('click', () => {
-    const card = button.closest('.help-card')
-    const open = card.classList.toggle('is-open')
-    button.setAttribute('aria-expanded', String(open))
-    button.querySelector('.help-cue').textContent = open ? 'Less' : 'More'
-  })
-})
-
 document.querySelectorAll('.faq-item button').forEach((button) => {
   button.addEventListener('click', () => {
     const item = button.closest('.faq-item')
