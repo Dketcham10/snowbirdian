@@ -2,7 +2,7 @@
 
 A single-page site for Snowbirdian Hospitality. Open `index.html` in a browser. There is no install and no build.
 
-The layout follows the rhythm of a large travel site: a pill search, sample home cards, and plain sections. Ratings, nightly prices, earnings, and extra team photos are marked `[PLACEHOLDER]` because those facts are not on file. The logo is `images/logo.png`. Buttons use the flame orange from that mark (`#ff8c2a`) on a white page.
+The layout follows the rhythm of a large travel site: a pill search, sample home cards, and plain sections. Ratings, nightly prices, earnings, and extra team photos are marked `[PLACEHOLDER]` because those facts are not on file. The logo is `images/logo.png`, in the header and the footer. Ice blue is `#2f9dff`. Flame orange is `#ff8c2a`. The header, footer, and closing band use the logo's near-black `#07080d`.
 
 This folder is separate from the SnowBirdian automation site at the root of the repository. Publish **this folder**, not the whole repo, or the other site will be replaced.
 
