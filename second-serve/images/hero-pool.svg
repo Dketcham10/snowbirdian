@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" role="img" aria-label="Placeholder illustration of a Scottsdale pool at golden hour">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F3C08A"/>
+      <stop offset="0.42" stop-color="#E08A55"/>
+      <stop offset="0.72" stop-color="#C46A45"/>
+      <stop offset="1" stop-color="#1C2430"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="url(#sky)"/>
+  <circle cx="1180" cy="210" r="78" fill="#F6E2C4" opacity="0.9"/>
+  <path d="M0 430 C240 360 420 500 700 450 C980 400 1140 330 1600 420 L1600 620 L0 620 Z" fill="#3F5A47" opacity="0.85"/>
+  <path d="M0 500 C280 440 520 590 860 530 C1160 478 1340 500 1600 560 L1600 760 L0 760 Z" fill="#2C4034"/>
+  <path d="M0 640 C300 600 560 720 900 670 C1220 624 1400 680 1600 650 L1600 1000 L0 1000 Z" fill="#1C2430"/>
+  <ellipse cx="430" cy="860" rx="280" ry="46" fill="#355E62" opacity="0.45"/>
+</svg>
