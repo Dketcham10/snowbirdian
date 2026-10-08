@@ -1,6 +1,6 @@
 # Snowbirdian Hospitality
 
-A single-page site for Snowbirdian Hospitality, a Scottsdale short-term rental company. It is plain HTML, CSS, and a small script. Open `index.html` in a browser. There is no install and no build.
+A single-page site for Snowbirdian Hospitality, short-term rental care for Arizona owners and investors in Scottsdale, Phoenix, Flagstaff, and Sedona. Out-of-state requests are optional. It is plain HTML, CSS, and a small script. Open `index.html` in a browser. There is no install and no build.
 
 This folder is separate from the SnowBirdian automation site at the root of the repository. Publish **this folder**, not the whole repo, or the other site will be replaced.
 

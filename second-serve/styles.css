@@ -1,17 +1,18 @@
 :root {
-  --sand: #f4ede4;
-  --bone: #fbf8f3;
-  --clay: #b5643c;
-  --clay-btn: #b15d3c;
-  --clay-ink: #fffaf6;
-  --saguaro: #3f5a47;
-  --navy: #1c2430;
-  --muted: #3e4856;
-  --line: rgba(28, 36, 48, 0.12);
-  --yellow: #d7e34a;
+  --sand: #07080d;
+  --bone: #f5f7fb;
+  --card: #161a24;
+  --clay: #ff8c2a;
+  --clay-btn: #ff8c2a;
+  --clay-ink: #1a0c06;
+  --saguaro: #4eb6ff;
+  --navy: #f5f7fb;
+  --muted: #c5d0de;
+  --line: rgba(245, 247, 251, 0.16);
+  --yellow: #4eb6ff;
   --serif: "Fraunces", Georgia, "Times New Roman", serif;
   --sans: "Manrope", "Segoe UI", sans-serif;
-  --shadow: 0 18px 40px rgba(28, 36, 48, 0.08);
+  --shadow: 0 18px 44px rgba(0, 0, 0, 0.45);
   --radius: 1.35rem;
   --nav-h: 4.25rem;
   --wrap: 72rem;
@@ -92,8 +93,8 @@ h3 {
   position: absolute;
   left: 1rem;
   top: -4rem;
-  background: var(--bone);
-  color: var(--navy);
+  background: var(--card);
+  color: var(--bone);
   padding: 0.6rem 0.9rem;
   z-index: 40;
 }
@@ -128,7 +129,7 @@ h3 {
 }
 
 .section-alt {
-  background: var(--bone);
+  background: #0d1018;
 }
 
 .section-tight {
@@ -168,7 +169,7 @@ h3 {
 }
 
 .btn-clay:hover {
-  background: #9c5432;
+  background: #ff9d45;
 }
 
 .btn-ghost {
@@ -194,12 +195,11 @@ h3 {
   min-width: 0;
 }
 
-.ball {
-  width: 0.62rem;
-  height: 0.62rem;
-  border-radius: 50%;
-  background: var(--yellow);
-  box-shadow: inset -1px -1px 0 rgba(28, 36, 48, 0.18);
+.logo-mark {
+  width: 2rem;
+  height: 2.35rem;
+  object-fit: contain;
+  flex: none;
 }
 
 .nav {
@@ -221,17 +221,17 @@ h3 {
 }
 
 .nav.is-solid {
-  background: var(--bone);
-  box-shadow: 0 1px 0 var(--line);
+  background: #07080d;
+  box-shadow: inset 0 -2px 0 #ff8c2a;
 }
 
 .nav.is-solid .nav-bar,
 .nav.is-open .nav-bar {
-  color: var(--navy);
+  color: var(--bone);
 }
 
 .nav.is-open .nav-bar {
-  background: var(--bone);
+  background: var(--card);
   box-shadow: var(--shadow);
 }
 
@@ -260,8 +260,8 @@ h3 {
   flex-direction: column;
   align-items: stretch;
   padding: 0.8rem;
-  background: var(--bone);
-  color: var(--navy);
+  background: var(--card);
+  color: var(--bone);
   border-radius: 1.2rem;
   box-shadow: var(--shadow);
 }
@@ -309,7 +309,8 @@ h3 {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to top, rgba(28, 36, 48, 0.78), rgba(28, 36, 48, 0.18) 55%, rgba(28, 36, 48, 0.28));
+    linear-gradient(to top, rgba(7, 8, 13, 0.92), rgba(7, 8, 13, 0.28) 52%, rgba(7, 8, 13, 0.4)),
+    linear-gradient(115deg, rgba(78, 182, 255, 0.22), transparent 42%, rgba(255, 140, 42, 0.2));
 }
 
 .hero-copy {
@@ -337,7 +338,7 @@ h3 {
   width: min(100%, 26rem);
   padding: 0.3rem;
   margin-bottom: 1.25rem;
-  background: var(--bone);
+  background: var(--card);
   border-radius: 999px;
   box-shadow: var(--shadow);
 }
@@ -353,14 +354,14 @@ h3 {
 }
 
 .switch-btn.is-active {
-  background: var(--navy);
-  color: var(--bone);
+  background: var(--clay-btn);
+  color: var(--clay-ink);
 }
 
 .panel {
   display: grid;
   gap: 1.2rem;
-  background: var(--bone);
+  background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.4rem;
@@ -417,14 +418,14 @@ h3 {
 
 .help-card,
 .why-card {
-  background: var(--bone);
+  background: var(--card);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
 .section-alt .help-card,
 .section-alt .why-card {
-  background: var(--sand);
+  background: #1b2030;
 }
 
 .help-toggle {
@@ -526,7 +527,7 @@ h3 {
 }
 
 .step {
-  background: var(--sand);
+  background: #1b2030;
   border-radius: var(--radius);
   padding: 1.3rem;
 }
@@ -561,7 +562,7 @@ h3 {
   border-radius: var(--radius);
   overflow: hidden;
   box-shadow: var(--shadow);
-  background: var(--bone);
+  background: #10131c;
 }
 
 .about-photo img {
@@ -660,8 +661,8 @@ h3 {
   margin-top: 2rem;
   padding: 1.2rem;
   border-radius: var(--radius);
-  background: rgba(251, 248, 243, 0.96);
-  color: var(--navy);
+  background: rgba(22, 26, 36, 0.94);
+  color: var(--bone);
   box-shadow: var(--shadow);
 }
 
@@ -682,8 +683,8 @@ h3 {
 .form textarea {
   width: 100%;
   border: 1px solid var(--line);
-  background: var(--bone);
-  color: var(--navy);
+  background: #0c0e14;
+  color: var(--bone);
   border-radius: 0.8rem;
   padding: 0.75rem 0.8rem;
   font: 500 1rem/1.4 var(--sans);
@@ -699,8 +700,9 @@ h3 {
 }
 
 .footer {
-  background: var(--navy);
+  background: #05060a;
   color: var(--bone);
+  border-top: 2px solid #4eb6ff;
   padding: 2.5rem 0 2rem;
 }
 
@@ -823,7 +825,7 @@ h3 {
   }
 
   .why-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .steps {
