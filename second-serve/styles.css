@@ -14,7 +14,7 @@
   --sans: "Manrope", "Segoe UI", sans-serif;
   --shadow: 0 18px 40px rgba(28, 36, 48, 0.08);
   --radius: 1.35rem;
-  --nav-h: 4.25rem;
+  --nav-h: 5.25rem;
   --wrap: 72rem;
 }
 
@@ -55,7 +55,7 @@ p {
 }
 
 section[id] {
-  scroll-margin-top: 5.25rem;
+  scroll-margin-top: 6rem;
 }
 
 h1,
@@ -187,8 +187,9 @@ h3 {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  font-size: 1.2rem;
+  gap: 0.7rem;
+  font-size: 1.28rem;
+  line-height: 1;
   text-decoration: none;
   white-space: nowrap;
   flex: 0 1 auto;
@@ -196,46 +197,39 @@ h3 {
 }
 
 .logo-mark {
-  width: 2.15rem;
-  height: 2.15rem;
-  object-fit: cover;
-  border-radius: 0.4rem;
-  background: #000;
+  width: 2.7rem;
+  height: 2.7rem;
+  object-fit: contain;
+  background: transparent;
   flex: none;
+}
+
+.nav .logo-mark {
+  width: 2.85rem;
+  height: 2.85rem;
 }
 
 .nav {
   position: fixed;
   inset: 0 0 auto;
   z-index: 30;
-  background: var(--ink);
-  color: var(--bone);
+  background: var(--bone);
+  color: var(--navy);
+  border-bottom: 1px solid var(--line);
 }
 
 .nav-bar {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  width: min(100% - 1.4rem, var(--wrap));
-  margin: 0.7rem auto 0;
-  padding: 0.45rem 0.55rem 0.45rem 0.9rem;
-  border-radius: 999px;
+  gap: 1.25rem;
+  width: min(100% - 2.4rem, var(--wrap));
+  min-height: var(--nav-h);
+  margin: 0 auto;
 }
 
 .nav.is-solid {
-  background: var(--ink);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
-}
-
-.nav.is-solid .nav-bar,
-.nav.is-open .nav-bar {
-  color: var(--bone);
-}
-
-.nav.is-open .nav-bar {
-  background: var(--ink);
-  box-shadow: var(--shadow);
+  background: var(--bone);
+  box-shadow: 0 10px 30px rgba(28, 36, 48, 0.06);
 }
 
 .nav-cta {
@@ -244,14 +238,23 @@ h3 {
 
 .nav-links {
   display: none;
-  gap: 1.15rem;
+  gap: 0.25rem;
   align-items: center;
 }
 
 .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  padding: 0 0.7rem;
   text-decoration: none;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 600;
+  line-height: 1;
+}
+
+.nav-links a:hover {
+  color: var(--saguaro);
 }
 
 .nav.is-open .nav-links {
@@ -259,18 +262,20 @@ h3 {
   position: absolute;
   left: 0.7rem;
   right: 0.7rem;
-  top: calc(100% - 0.2rem);
+  top: calc(100% + 0.35rem);
   flex-direction: column;
   align-items: stretch;
-  padding: 0.8rem;
-  background: var(--ink);
-  color: var(--bone);
+  padding: 0.45rem;
+  background: var(--bone);
+  color: var(--navy);
+  border: 1px solid var(--line);
   border-radius: 1.2rem;
   box-shadow: var(--shadow);
 }
 
 .nav.is-open .nav-links a {
-  padding: 0.7rem 0.4rem;
+  height: auto;
+  padding: 0.75rem 0.7rem;
 }
 
 .nav-toggle {
@@ -817,13 +822,22 @@ h3 {
     display: none;
   }
 
+  .nav .logo {
+    font-size: 1.65rem;
+  }
+
+  .nav .logo-mark {
+    width: 3.35rem;
+    height: 3.35rem;
+  }
+
   .nav-links {
     display: flex;
     margin-left: auto;
   }
 
   .nav-cta {
-    margin-left: 1rem;
+    margin-left: 0.35rem;
   }
 
   .panel.is-shown {
