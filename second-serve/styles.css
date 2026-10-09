@@ -482,6 +482,10 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.mosaic img.frame-courts {
+  object-position: center 72%;
+}
+
 .mosaic span {
   position: absolute;
   left: 0.7rem;
