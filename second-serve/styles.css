@@ -515,8 +515,7 @@ h3 {
 }
 
 .mosaic img.frame-courts {
-  object-fit: contain;
-  object-position: center;
+  object-position: center 42%;
 }
 
 .mosaic span {
@@ -563,9 +562,14 @@ h3 {
   }
 }
 
-.mosaic li.court-original {
+.mosaic li.stadium-original {
   min-height: 0;
-  aspect-ratio: 480 / 780;
+  aspect-ratio: 1800 / 1350;
+}
+
+.mosaic img.frame-stadium {
+  object-fit: contain;
+  object-position: center;
 }
 
 .why-card {
