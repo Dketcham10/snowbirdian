@@ -1,8 +1,10 @@
 # Snowbirdian Hospitality
 
-A single-page site for Snowbirdian Hospitality. It is plain HTML, CSS, and a small script. Open `index.html` in a browser. There is no install and no build.
+The site for **www.snowbirdian.com**. It is plain HTML, CSS, and a small script. Open `index.html` in a browser. There is no install and no build.
 
-This folder is separate from the SnowBirdian automation site at the root of the repository. Publish **this folder**, not the whole repo, or the other site will be replaced.
+GitHub Pages publishes this folder from `.github/workflows/pages.yml` when `main` updates. `CNAME` keeps the custom domain on this folder.
+
+The SnowBirdian AI app stays at the repository root for a different website. It is not part of this deploy.
 
 ## Edit the words
 
@@ -19,9 +21,9 @@ Search the folder for `[PHONE]` and `[EMAIL]` before you publish.
 
 ## Deploy
 
-**Netlify:** drag this folder onto [Netlify Drop](https://app.netlify.com/drop), or set the publish directory to `second-serve` if the repo is connected. The contact form uses the `netlify` attribute. It sends only after the site is hosted on Netlify. Opening the file on your computer will not deliver the form.
+**GitHub Pages (snowbirdian.com):** merging to `main` uploads this folder. The contact form uses the `netlify` attribute. GitHub Pages will not deliver those submissions.
 
-**GitHub Pages:** this repository already publishes a different site from the root. To publish Snowbirdian Hospitality on its own, use a separate repository with these files at the root, and set Pages to deploy from the branch. The form needs Netlify (or another form host). GitHub Pages will not send it.
+**Netlify:** drag this folder onto [Netlify Drop](https://app.netlify.com/drop) if the form should send. It sends only after the site is hosted on Netlify.
 
 ## What the script does
 

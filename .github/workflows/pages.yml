@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Snowbirdian Hospitality to GitHub Pages
 
 on:
   push:
@@ -23,15 +23,11 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: npm
-      - run: npm ci
-      - run: npm run build
+      # www.snowbirdian.com publishes the hospitality page only.
+      # The SnowBirdian AI app stays in this repo and is not part of this deploy.
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: second-serve
 
   deploy:
     needs: build
