@@ -450,28 +450,41 @@ h3 {
   background: var(--sand);
 }
 
-.audiences {
+.client-list {
   display: grid;
-  gap: 3.25rem;
+  gap: 1.5rem;
 }
 
-.audience {
+.client-band {
   display: grid;
-  gap: 1.35rem;
+  gap: 1.4rem;
+  padding: 1.5rem;
+  background: var(--sand);
+  border-radius: var(--radius);
 }
 
-.audience + .audience {
-  padding-top: 3.25rem;
-  border-top: 1px solid var(--line);
+.client-index {
+  margin: 0;
+  color: var(--saguaro);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
 }
 
-.audience-copy h3 {
-  max-width: 18ch;
-  font-size: clamp(1.7rem, 3vw, 2.4rem);
+.client-copy h3 {
+  margin-top: 0.35rem;
+  max-width: none;
+  font-size: clamp(2rem, 4vw, 2.8rem);
 }
 
-.audience-copy p:last-child {
-  margin-top: 0.9rem;
+.client-line {
+  margin-top: 0.7rem;
+  max-width: 34rem;
+  font-size: 1.08rem;
+}
+
+.client-copy p:last-child {
+  margin-top: 0.75rem;
   max-width: 36rem;
   color: var(--muted);
 }
@@ -532,18 +545,11 @@ h3 {
 }
 
 @media (min-width: 960px) {
-  .audience {
-    grid-template-columns: minmax(17rem, 0.82fr) 1.25fr;
-    gap: 2.4rem;
+  .client-band {
+    grid-template-columns: minmax(16rem, 0.78fr) 1.22fr;
+    gap: 2rem;
     align-items: center;
-  }
-
-  .audience-flip {
-    grid-template-columns: 1.25fr minmax(17rem, 0.82fr);
-  }
-
-  .audience-flip .audience-copy {
-    order: 2;
+    padding: 1.75rem;
   }
 
   .mosaic li.mosaic-lead {
