@@ -1,6 +1,10 @@
 name: Restart Pages certificate
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/restart-pages-certificate.yml
   workflow_dispatch:
 
 permissions:
