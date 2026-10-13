@@ -51,7 +51,7 @@
             <input type="tel" name="phone" autocomplete="tel" />
           </label>
           <label>
-            Property address
+            <span data-address-label>Property address</span>
             <input type="text" name="address" autocomplete="street-address" />
           </label>
           <label>
@@ -59,7 +59,7 @@
             <input type="text" name="sleeps" placeholder="e.g. 5 bed, sleeps 12" />
           </label>
           <label>
-            Currently listed?
+            <span data-listed-label>Currently listed?</span>
             <select name="listed">
               <option value="">Select one</option>
               ${options(content.listingStatus)}
@@ -111,6 +111,10 @@
           <p class="quote-note">Pricing is confirmed after a free property walkthrough.</p>
           <button class="btn btn-clay" type="submit">Request My Quote</button>
         </div>
+        <p class="privacy-note">
+          By submitting, you agree we may contact you about your home. See our
+          <a href="/privacy/">Privacy Policy</a>.
+        </p>
         <p class="form-status" role="alert" hidden></p>
       </form>
     `
@@ -154,10 +158,26 @@
     }
     if (content.SHOW_FEES) {
       document.querySelectorAll("[data-fee-key]").forEach((el) => {
-        const fee = content.fees[el.dataset.feeKey]
-        if (fee) el.textContent = fee
+        const fee = content.fees && content.fees[el.dataset.feeKey]
+        el.textContent = fee || "Custom quote"
       })
     }
+  }
+
+  function pageDefaultPlan(form) {
+    const slot = form.closest("[data-quote-form]")
+    return (slot && slot.dataset.defaultPlan) || "full-service"
+  }
+
+  function updateInvestorLabels(form) {
+    const address = form.querySelector("[data-address-label]")
+    const listed = form.querySelector("[data-listed-label]")
+    if (!address || !listed) return
+    const partner = selectedPlan(form) === "partnership"
+    const type = String((form.elements.partnerType && form.elements.partnerType.value) || "")
+    const soft = partner && (type === "Looking to buy a property" || type === "An investor")
+    address.textContent = soft ? "Property address (if you have one)" : "Property address"
+    listed.textContent = soft ? "Currently listed? (skip if buying)" : "Currently listed?"
   }
 
   function hutk() {
@@ -167,25 +187,29 @@
 
   function selectedPlan(form) {
     const pressed = form.querySelector("[data-plan-choice][aria-pressed='true']")
-    return pressed ? pressed.dataset.planChoice : "full-service"
+    return pressed ? pressed.dataset.planChoice : pageDefaultPlan(form)
   }
 
   function setPlan(form, planId) {
     const known = content.plans.some((plan) => plan.id === planId)
-    const next = known ? planId : "full-service"
+    const next = known ? planId : pageDefaultPlan(form)
     form.querySelectorAll("[data-plan-choice]").forEach((button) => {
       const on = button.dataset.planChoice === next
       button.setAttribute("aria-pressed", String(on))
       button.classList.toggle("is-selected", on)
     })
     const extra = form.querySelector("[data-partner-fields]")
-    if (!extra) return
+    if (!extra) {
+      updateInvestorLabels(form)
+      return
+    }
     const show = next === "partnership"
     if (show) {
       extra.hidden = false
       extra.inert = false
       if (reduceMotion) extra.classList.add("is-on")
       else requestAnimationFrame(() => extra.classList.add("is-on"))
+      updateInvestorLabels(form)
       return
     }
     extra.classList.remove("is-on")
@@ -195,10 +219,12 @@
     }
     if (reduceMotion || extra.hidden) {
       hide()
+      updateInvestorLabels(form)
       return
     }
     extra.addEventListener("transitionend", hide, { once: true })
     window.setTimeout(hide, 400)
+    updateInvestorLabels(form)
   }
 
   function clearErrors(form) {
@@ -306,12 +332,15 @@
   }
 
   function bind(form) {
-    const initial = new URLSearchParams(window.location.search).get("plan") || "full-service"
+    const initial = new URLSearchParams(window.location.search).get("plan") || pageDefaultPlan(form)
     setPlan(form, initial)
 
     form.querySelectorAll("[data-plan-choice]").forEach((button) => {
       button.addEventListener("click", () => setPlan(form, button.dataset.planChoice))
     })
+    if (form.elements.partnerType) {
+      form.elements.partnerType.addEventListener("change", () => updateInvestorLabels(form))
+    }
 
     form.addEventListener("submit", async (event) => {
       event.preventDefault()

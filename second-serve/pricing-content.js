@@ -1,5 +1,6 @@
 /* Snowbirdian Hospitality plans. Edit copy and flags here.
-   Fees stay hidden while SHOW_FEES is false. */
+   Fees stay hidden while SHOW_FEES is false.
+   Fee percentages are kept in Dillon's private notes, not in this public file. */
 window.PRICING = {
   SHOW_FEES: false,
   SHOW_FOUNDING_OFFER: true,
@@ -9,16 +10,12 @@ window.PRICING = {
   phoneDisplay: "480-881-0332",
   phoneTel: "4808810332",
   email: "dillon@snowbirdian.com",
-  fees: {
-    "co-hosting": "18% of nightly rent",
-    "full-service": "25% of nightly rent",
-    "all-inclusive": "30% of total bookings",
-  },
+  fees: {},
   hubspot: {
     /* This portal is in HubSpot's na2 region. api.hsforms.com accepts it; api-na1.hsforms.com does not. */
     portalId: "244446007",
     formId: "16fbd8df-d8c8-4709-b2b7-bb5a79aa7946",
-    tracking: false,
+    tracking: true,
     fields: {
       firstname: "firstname",
       lastname: "lastname",
