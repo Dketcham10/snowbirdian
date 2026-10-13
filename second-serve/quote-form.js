@@ -431,7 +431,9 @@
     scrollToQuote(link.dataset.plan)
   })
 
-  if (content.hubspot.tracking && content.hubspot.portalId && !document.querySelector("script[data-hs-script]")) {
+  function loadHubspotTracking() {
+    if (!content.hubspot.tracking || !content.hubspot.portalId) return
+    if (document.querySelector("script[data-hs-script]")) return
     const script = document.createElement("script")
     script.src = `https://js.hs-scripts.com/${content.hubspot.portalId}.js`
     script.async = true
@@ -440,5 +442,12 @@
     document.body.appendChild(script)
   }
 
-  window.addEventListener("load", focusQuote)
+  window.addEventListener("load", () => {
+    focusQuote()
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(loadHubspotTracking, { timeout: 2500 })
+    } else {
+      window.setTimeout(loadHubspotTracking, 1)
+    }
+  })
 })()
