@@ -15,8 +15,9 @@ window.PRICING = {
     "all-inclusive": "30% of total bookings",
   },
   hubspot: {
+    /* This portal is in HubSpot's na2 region. api.hsforms.com accepts it; api-na1.hsforms.com does not. */
     portalId: "244446007",
-    formId: "",
+    formId: "16fbd8df-d8c8-4709-b2b7-bb5a79aa7946",
     tracking: false,
     fields: {
       firstname: "firstname",
