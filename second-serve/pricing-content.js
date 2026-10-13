@@ -113,7 +113,7 @@ window.PRICING = {
       label: "Financial",
       rows: [
         ["Monthly owner statement", "we", "we", "we"],
-        ["Tax collection and remittance", "you", "we", "we"],
+        ["Tax license setup and filings", "you", "we", "we"],
       ],
     },
     {
