@@ -515,7 +515,9 @@ h3 {
 }
 
 .mosaic img.frame-courts {
-  object-position: center 42%;
+  object-fit: contain;
+  object-position: center;
+  background: var(--bone);
 }
 
 .mosaic span {
