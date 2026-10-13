@@ -62,8 +62,16 @@ showService('full')
 document.querySelectorAll('.faq-item button').forEach((button) => {
   button.addEventListener('click', () => {
     const item = button.closest('.faq-item')
-    const open = item.classList.toggle('is-open')
-    button.setAttribute('aria-expanded', String(open))
+    const willOpen = !item.classList.contains('is-open')
+    item.parentElement.querySelectorAll('.faq-item').forEach((other) => {
+      other.classList.remove('is-open')
+      const otherButton = other.querySelector('button')
+      if (otherButton) otherButton.setAttribute('aria-expanded', 'false')
+    })
+    if (willOpen) {
+      item.classList.add('is-open')
+      button.setAttribute('aria-expanded', 'true')
+    }
   })
 })
 

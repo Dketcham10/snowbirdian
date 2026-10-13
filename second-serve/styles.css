@@ -54,7 +54,11 @@ p {
   margin: 0;
 }
 
-section[id] {
+section[id],
+#home-watch,
+#add-ons,
+#quote,
+#contact {
   scroll-margin-top: 6rem;
 }
 
@@ -271,7 +275,8 @@ h3 {
   line-height: 1;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a[aria-current="page"] {
   color: var(--saguaro);
 }
 
@@ -728,8 +733,10 @@ h3 {
 }
 
 .form {
+  position: relative;
   margin-top: 2rem;
   padding: 1.2rem;
+  border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(251, 248, 243, 0.96);
   color: var(--navy);
@@ -907,6 +914,483 @@ h3 {
   }
 }
 
+.plan-grid {
+  display: grid;
+  gap: 1rem;
+  padding-top: 0.85rem;
+}
+
+.plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-height: 100%;
+  padding: 1.35rem 1.2rem 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--bone);
+  box-shadow: var(--shadow);
+}
+
+.plan-card h3 {
+  font-size: 1.55rem;
+}
+
+.plan-card p {
+  color: var(--muted);
+}
+
+.plan-card .plan-line {
+  color: var(--navy);
+}
+
+.plan-quote {
+  padding: 0.85rem 0;
+  border-block: 1px solid var(--line);
+}
+
+.plan-card .plan-price {
+  color: var(--navy);
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  line-height: 1.1;
+}
+
+.plan-card .plan-kicker {
+  color: var(--clay);
+}
+
+.plan-basis,
+.plan-best,
+.quote-note,
+.compare-note,
+.partner-aside,
+.chip-note {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.plan-best strong {
+  color: var(--saguaro);
+  font-weight: 700;
+}
+
+.plan-card .checks {
+  margin: 0;
+}
+
+.plan-card .btn {
+  width: 100%;
+  margin-top: auto;
+}
+
+.plan-card.is-popular {
+  border: 2px solid var(--clay);
+  box-shadow: 0 22px 48px rgba(28, 36, 48, 0.12);
+}
+
+.plan-badge {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0.32rem 0.7rem;
+  border-radius: 999px;
+  background: var(--clay-btn);
+  color: var(--clay-ink);
+  font: 700 0.68rem/1 var(--sans);
+  letter-spacing: 0.08em;
+}
+
+.plan-card.is-partner {
+  background: var(--navy);
+  color: var(--bone);
+  border-color: transparent;
+}
+
+.plan-card.is-partner p,
+.plan-card.is-partner .plan-basis,
+.plan-card.is-partner .plan-best {
+  color: rgba(255, 253, 251, 0.82);
+}
+
+.plan-card.is-partner .plan-price,
+.plan-card.is-partner h3 {
+  color: var(--bone);
+}
+
+.plan-card.is-partner .plan-best strong {
+  color: var(--clay);
+}
+
+.plan-card.is-partner .plan-quote {
+  border-color: rgba(255, 253, 251, 0.16);
+}
+
+.plan-kicker {
+  color: var(--clay);
+  font: 700 0.72rem/1 var(--sans);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn-line {
+  background: transparent;
+  color: var(--navy);
+  border-color: rgba(20, 23, 29, 0.28);
+}
+
+.btn-bone {
+  background: var(--bone);
+  color: var(--navy);
+}
+
+.center-copy {
+  text-align: center;
+}
+
+.center-copy h1,
+.center-copy h2,
+.center-copy .lead {
+  margin-inline: auto;
+}
+
+.plans-page main {
+  padding-top: var(--nav-h);
+}
+
+.plans-page h1 {
+  max-width: 16ch;
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+}
+
+.pill-note {
+  display: inline-block;
+  margin-top: 1.1rem;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bone);
+  color: var(--saguaro);
+  font-size: 0.92rem;
+  font-weight: 650;
+}
+
+.compare-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 1rem;
+  background: var(--bone);
+  box-shadow: var(--shadow);
+}
+
+.compare-table {
+  width: 100%;
+  min-width: 40rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.compare-table th,
+.compare-table td {
+  padding: 0.75rem 0.85rem;
+  border-bottom: 1px solid var(--line);
+  text-align: center;
+  vertical-align: middle;
+}
+
+.compare-table th:first-child,
+.compare-table td:first-child {
+  text-align: left;
+}
+
+.compare-table thead th {
+  background: var(--navy);
+  color: var(--bone);
+  font-weight: 700;
+}
+
+.compare-table thead th.is-featured {
+  background: var(--clay-btn);
+  color: var(--clay-ink);
+}
+
+.compare-group th {
+  background: var(--sand);
+  color: var(--saguaro);
+  font: 700 0.72rem/1.2 var(--sans);
+  letter-spacing: 0.08em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.compare-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.compare-legend strong {
+  color: var(--navy);
+}
+
+.is-addon {
+  color: var(--clay-btn);
+}
+
+.compare-note a {
+  color: var(--saguaro);
+  font-weight: 700;
+}
+
+.check-icon {
+  color: var(--saguaro);
+}
+
+.partner-band {
+  background: var(--navy);
+  color: var(--bone);
+}
+
+.partner-band h2,
+.partner-band .lead,
+.partner-band .partner-aside {
+  color: var(--bone);
+}
+
+.partner-band .partner-aside {
+  color: rgba(255, 253, 251, 0.78);
+}
+
+.partner-grid,
+.split-2,
+.quote-layout {
+  display: grid;
+  gap: 1rem;
+}
+
+.partner-card,
+.info-card {
+  padding: 1.25rem;
+  border-radius: 1rem;
+  background: #232833;
+}
+
+.partner-card h3,
+.info-card h2,
+.info-card h3 {
+  color: var(--bone);
+}
+
+.partner-card p,
+.info-card p {
+  margin-top: 0.55rem;
+  color: rgba(255, 253, 251, 0.82);
+}
+
+.info-card {
+  background: var(--bone);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.info-card h2,
+.info-card h3,
+.info-card p {
+  color: var(--navy);
+}
+
+.info-card p {
+  color: var(--muted);
+}
+
+.partner-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem 1rem;
+  margin-top: 1.4rem;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 0.9rem;
+  padding: 0;
+  list-style: none;
+}
+
+.chips li {
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--sand);
+  font-size: 0.86rem;
+  font-weight: 650;
+}
+
+.founding {
+  padding: 1.4rem;
+  border-radius: 1rem;
+  background: var(--saguaro);
+  color: var(--bone);
+}
+
+.founding h2 {
+  color: var(--bone);
+  max-width: none;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+}
+
+.founding p {
+  margin-top: 0.45rem;
+}
+
+.founding .btn {
+  margin-top: 1rem;
+  background: var(--bone);
+  color: var(--saguaro);
+}
+
+.quote-steps {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.quote-steps li + li {
+  margin-top: 0.35rem;
+}
+
+.direct-links {
+  display: grid;
+  gap: 0.25rem;
+  margin-top: 1.2rem;
+}
+
+.direct-links a {
+  font-weight: 700;
+}
+
+.plan-pills {
+  margin: 0 0 1rem;
+  padding: 0;
+  border: 0;
+}
+
+.plan-pills legend {
+  margin-bottom: 0.5rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.plan-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.plan-pill {
+  min-height: 44px;
+  padding: 0.45rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bone);
+  color: var(--navy);
+  font: 650 0.88rem/1 var(--sans);
+  cursor: pointer;
+}
+
+.plan-pill.is-selected {
+  border-color: transparent;
+  background: var(--clay-btn);
+  color: var(--clay-ink);
+}
+
+.partner-fields {
+  display: grid;
+  gap: 0.9rem;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+}
+
+.partner-fields.is-on {
+  max-height: 36rem;
+  opacity: 1;
+}
+
+.partner-fields[hidden] {
+  display: none;
+}
+
+.quote-foot {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.field-error,
+.form-status.is-error {
+  color: #8a2b12;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.form input.is-invalid,
+.form select.is-invalid,
+.form textarea.is-invalid {
+  border-color: #8a2b12;
+}
+
+.quote-success h3 {
+  font-size: 2rem;
+}
+
+.quote-success p {
+  margin-top: 0.4rem;
+  color: var(--muted);
+}
+
+.form-status a {
+  color: inherit;
+}
+
+.btn:focus-visible,
+.plan-pill:focus-visible,
+.faq-item button:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--saguaro);
+  outline-offset: 3px;
+}
+
+@media (min-width: 720px) {
+  .plan-grid,
+  .partner-grid,
+  .split-2,
+  .quote-layout {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1100px) {
+  .plan-grid-4 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .partner-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -915,6 +1399,7 @@ h3 {
   .js .reveal,
   .btn,
   .faq-panel,
+  .partner-fields,
   .hero-media img {
     transition: none;
     animation: none;
