@@ -514,10 +514,26 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.mosaic li:has(img.frame-courts) {
+  overflow: hidden;
+  background: var(--bone);
+  border-radius: 1.1rem;
+  box-shadow: var(--shadow);
+}
+
 .mosaic img.frame-courts {
+  top: 0;
+  right: auto;
+  bottom: 0;
+  left: 50%;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  transform: translateX(-50%);
   object-fit: contain;
   object-position: center;
-  background: var(--bone);
+  background: transparent;
+  box-shadow: none;
 }
 
 .mosaic span {
