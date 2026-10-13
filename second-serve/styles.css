@@ -1074,6 +1074,7 @@ h3 {
   box-shadow: var(--shadow);
 }
 
+.plan-card h2,
 .plan-card h3 {
   font-size: 1.55rem;
 }
