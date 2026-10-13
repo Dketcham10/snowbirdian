@@ -77,3 +77,56 @@ document.querySelectorAll('.faq-item button').forEach((button) => {
 
 const year = document.querySelector('[data-year]')
 if (year) year.textContent = String(new Date().getFullYear())
+
+const audienceLinks = [...document.querySelectorAll('[data-audience]')]
+if (audienceLinks.length) {
+  const names = ['snowbirds', 'club']
+  const bands = {
+    snowbirds: document.getElementById('snowbirds'),
+    club: document.getElementById('club'),
+  }
+  let index = 0
+  let timer = null
+
+  function setAudience(name) {
+    audienceLinks.forEach((link) => {
+      const on = link.dataset.audience === name
+      link.classList.toggle('is-active', on)
+      if (on) link.setAttribute('aria-current', 'true')
+      else link.removeAttribute('aria-current')
+    })
+    Object.entries(bands).forEach(([key, band]) => {
+      if (band) band.classList.toggle('is-lit', key === name)
+    })
+  }
+
+  function startAudience() {
+    if (reduceMotion || timer) return
+    timer = window.setInterval(() => {
+      index = (index + 1) % names.length
+      setAudience(names[index])
+    }, 2600)
+  }
+
+  function stopAudience() {
+    window.clearInterval(timer)
+    timer = null
+  }
+
+  setAudience('snowbirds')
+  startAudience()
+
+  audienceLinks.forEach((link) => {
+    link.addEventListener('mouseenter', () => {
+      stopAudience()
+      index = names.indexOf(link.dataset.audience)
+      setAudience(link.dataset.audience)
+    })
+    link.addEventListener('focus', () => {
+      stopAudience()
+      setAudience(link.dataset.audience)
+    })
+    link.addEventListener('mouseleave', startAudience)
+    link.addEventListener('blur', startAudience)
+  })
+}

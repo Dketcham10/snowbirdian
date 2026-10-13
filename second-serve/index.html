@@ -28,7 +28,7 @@
       <div class="nav-bar">
         <a class="logo" href="#main">
           <img class="logo-mark" src="images/logo.png" alt="" width="54" height="54" />
-          Snowbirdian
+          <span class="logo-words">Snowbirdian Hospitality</span>
         </a>
         <button
           class="nav-toggle"
@@ -65,8 +65,11 @@
           <p class="eyebrow eyebrow-light">Scottsdale, Phoenix</p>
           <h1>Your Arizona home, cared for like it's our own.</h1>
           <p class="hero-sub">
-            Short-term rental care for country club members who travel frequently,
-            and Midwest snowbirds who are in town for part of the year.
+            Short-term rental care for
+            <a class="audience-inline" href="#club">country club members</a>
+            who travel frequently, and
+            <a class="audience-inline" href="#snowbirds">Midwest snowbirds</a>
+            who are in town for part of the year.
           </p>
           <div class="hero-actions">
             <a class="btn btn-clay" href="/hospitality/pricing#quote">Get a Quote</a>
@@ -186,7 +189,7 @@
             </article>
             <article class="plan-card reveal">
               <h3>All-Inclusive</h3>
-              <p class="plan-line">Full-Service plus concierge and consulting, with no add-on bills.</p>
+              <p class="plan-line">Full-Service plus guest concierge and consulting for additional revenue, with no add-on bills. “Introduce them to Arizona and plan their trips.”</p>
               <p class="plan-price" data-fee-key="all-inclusive">Custom quote</p>
               <a class="btn btn-line" href="/hospitality/pricing?plan=all-inclusive#quote">Get a Quote</a>
             </article>
@@ -207,10 +210,13 @@
         <div class="wrap">
           <div class="section-intro who-intro reveal">
             <h2 id="who-title">Who we help</h2>
-            <p class="who-lead">Country club members who travel, and snowbirds from the Midwest.</p>
+            <p class="who-lead" data-audiences>
+              <a class="audience" href="#snowbirds" data-audience="snowbirds">Midwest Snowbirds.</a>
+              <a class="audience" href="#club" data-audience="club">Country Club Members.</a>
+            </p>
           </div>
           <div class="client-list">
-            <article class="client-band reveal">
+            <article class="client-band reveal" id="club">
               <div class="client-copy">
                 <p class="client-index">01</p>
                 <h3>Country club clients</h3>
@@ -233,7 +239,7 @@
                 </li>
               </ul>
             </article>
-            <article class="client-band reveal">
+            <article class="client-band reveal" id="snowbirds">
               <div class="client-copy">
                 <p class="client-index">02</p>
                 <h3>Midwest snowbirds</h3>
@@ -299,7 +305,11 @@
       <section class="section section-tight" aria-labelledby="where-title">
         <div class="wrap where reveal">
           <h2 id="where-title">Where your home gets booked</h2>
-          <p class="wordmarks">Airbnb · Vrbo · Booking.com</p>
+          <ul class="channel-logos">
+            <li><img src="images/logo-airbnb.svg" alt="Airbnb" width="168" height="52" /></li>
+            <li><img src="images/logo-vrbo.svg" alt="Vrbo" width="150" height="48" /></li>
+            <li><img src="images/logo-booking.svg" alt="Booking.com" width="188" height="32" /></li>
+          </ul>
           <p class="fine">
             Snowbirdian Hospitality is not affiliated with these companies.
           </p>
