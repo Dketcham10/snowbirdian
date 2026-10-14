@@ -4,7 +4,7 @@
 window.PRICING = {
   SHOW_FEES: false,
   SHOW_FOUNDING_OFFER: true,
-  FOUNDING_OWNER_SPOTS: 5,
+  FOUNDING_OWNER_SPOTS: 10,
   FOUNDING_RATE_LOCK: "2 years",
   NOTICE_PERIOD: "60 days",
   phoneDisplay: "480-881-0332",
