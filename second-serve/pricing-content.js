@@ -9,7 +9,7 @@ window.PRICING = {
   NOTICE_PERIOD: "60 days",
   phoneDisplay: "480-881-0332",
   phoneTel: "4808810332",
-  email: "dillon@snowbirdian.com",
+  email: "contact@snowbirdian.com",
   fees: {},
   hubspot: {
     /* This portal is in HubSpot's na2 region. api.hsforms.com accepts it; api-na1.hsforms.com does not. */
