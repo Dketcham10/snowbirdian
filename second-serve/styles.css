@@ -638,6 +638,7 @@ h3 {
 
 .mosaic span {
   position: absolute;
+  z-index: 1;
   left: 0.7rem;
   bottom: 0.7rem;
   max-width: calc(100% - 1.4rem);
