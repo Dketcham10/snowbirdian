@@ -713,7 +713,8 @@ h3 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.4rem 2.6rem;
+  gap: 1.5rem 2.8rem;
+  width: 100%;
   margin: 1.6rem 0 0;
   padding: 0;
   list-style: none;
@@ -722,19 +723,29 @@ h3 {
 .channel-logos li {
   display: flex;
   align-items: center;
-  min-height: 3.2rem;
+  justify-content: center;
+  min-height: 3.6rem;
 }
 
 .channel-logos img {
   display: block;
   width: auto;
-  height: 2.35rem;
-  max-width: 11.5rem;
+  height: 2.85rem;
+  max-width: 13rem;
 }
 
 .channel-logos li:nth-child(3) img {
-  height: 1.7rem;
-  max-width: 13rem;
+  height: 2.1rem;
+  max-width: 15rem;
+}
+
+.channel-more {
+  color: var(--navy);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .fine,
@@ -839,14 +850,18 @@ h3 {
   grid-template-rows: 1fr;
 }
 
-.faq-panel p {
+.faq-panel-inner {
   overflow: hidden;
-  color: var(--muted);
-  padding-bottom: 0;
+  min-height: 0;
 }
 
-.faq-item.is-open .faq-panel p {
+.faq-panel p {
+  color: var(--muted);
   padding-bottom: 1rem;
+}
+
+.faq-panel p + p {
+  padding-top: 0.15rem;
 }
 
 .cta {
